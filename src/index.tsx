@@ -14,6 +14,7 @@ export * from './VarSlider';
 export * from './VarString';
 export * from './VarToggle';
 export * from './VarXY';
+export * from './VarImage';
 
 // Other
 export * from './VarCategory';

@@ -724,6 +724,73 @@ var VarXY = function VarXY(_ref) {
   }))));
 };
 
+var IconImageSelect = function IconImageSelect() {
+  return React.createElement("svg", {
+    width: "34",
+    height: "36",
+    viewBox: "0 0 34 36",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, React.createElement("rect", {
+    x: "0.5",
+    y: "2.5",
+    width: "33",
+    height: "33",
+    rx: "5.5",
+    stroke: "#515151"
+  }), React.createElement("path", {
+    d: "M16.456 13.736V18.968H11.2V20.6H16.456V25.856H18.088V20.6H23.32V18.968H18.088V13.736H16.456Z",
+    fill: "#515151"
+  }));
+};
+
+/**
+ * A simple component that displays a string or a numeric value.
+ */
+
+var VarImage = function VarImage(_ref) {
+  var label = _ref.label,
+      disabled = _ref.disabled,
+      path = _ref.path,
+      value = _ref.value,
+      onChange = _ref.onChange,
+      className = _ref.className;
+
+  var _useVarUIValue = useVarUIValue(path, value, onChange),
+      currentValue = _useVarUIValue[0],
+      setCurrentValue = _useVarUIValue[1];
+
+  var deleteAction = useCallback(function () {
+    return setCurrentValue(null);
+  }, [setCurrentValue]);
+  var onFileChange = useCallback(function (event) {
+    var files = event == null ? void 0 : event.target.files;
+    if (!files || !files.length) return;
+    var file = files[0];
+    var url = URL.createObjectURL(file);
+    setCurrentValue(url);
+  }, [setCurrentValue]);
+  return React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("div", {
+    className: "react-var-ui-image"
+  }, React.createElement("div", {
+    className: "react-var-ui-image-wrapper"
+  }, currentValue == null ? React.createElement(IconImageSelect, null) : React.createElement("img", {
+    className: "react-var-ui-image-wrapper-preview",
+    src: currentValue instanceof HTMLImageElement ? currentValue.src : currentValue,
+    alt: "preview"
+  }), React.createElement("input", {
+    type: "file",
+    onChange: onFileChange
+  })), currentValue != null ? React.createElement("span", {
+    className: "react-var-ui-image-delete",
+    onClick: deleteAction
+  }, "\u5220\u9664") : null));
+};
+
 /**
  * Category component for grouping inputs.
  */
@@ -739,5 +806,5 @@ var VarCategory = function VarCategory(_ref) {
   }, label), !!children && React.createElement("div", null, children));
 };
 
-export { VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarXY, useVarUIValue };
+export { VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarXY, useVarUIValue };
 //# sourceMappingURL=react-var-ui.esm.js.map

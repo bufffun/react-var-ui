@@ -17,9 +17,12 @@ import {
   VarAngle,
   VarDisplay,
   VarNumber,
+  VarImage
 } from '../.';
 
 const App = () => {
+  const image = new Image();
+  image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
   const [values, setValues] = React.useState({
     toggle: true,
     color: '#FF0000',
@@ -30,6 +33,7 @@ const App = () => {
     string: 'test',
     angle: 0,
     xy: [0, 0],
+    image : image
   });
 
   return (
@@ -39,10 +43,12 @@ const App = () => {
         <div className="wrapper">
           <VarUI updateValues={setValues} values={values}>
             <VarCategory label="Example">
+          
               <VarColor label="VarColor" path="color" />
               <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
               <VarDisplay label="VarDisplay" path="color" />
               <VarToggle label="VarToggle" path="toggle" />
+              <VarImage label="VarImage" path="image"/>
               <VarSelect
                 path="select"
                 label="VarSelect"
@@ -112,7 +118,7 @@ const App = () => {
             </VarCategory>
           </VarUI>
         </div>
-        <div className="values">
+        {/* <div className="values">
           <strong>Values:</strong>
           <dl>
             {Object.keys(values).map(key => (
@@ -130,7 +136,7 @@ const App = () => {
               </React.Fragment>
             ))}
           </dl>
-        </div>
+        </div> */}
       </div>
     </div>
   );
