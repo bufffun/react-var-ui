@@ -43,7 +43,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
    * On change event, called with the new value if provided.
    * In most cases you aren't going to need this.
    */
-  onChange?: (path: string |undefined, value: T) => void;
+  onChange?: (path: string | undefined, value: T) => void;
 }
 
 /**
@@ -54,7 +54,7 @@ export const VarBase: FC<IVarBaseProps> = ({
   label,
   children,
   className,
-  disabled
+  disabled,
 }) => {
   return (
     <div

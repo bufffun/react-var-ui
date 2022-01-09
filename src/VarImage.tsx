@@ -5,9 +5,17 @@ import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
 export interface IVarImageProps
-  extends IVarBaseInputProps<HTMLImageElement | string | null> {
+  extends IVarBaseInputProps<{
+    src: HTMLImageElement | string | null;
+    type?: string;
+    extension?: string;
+  }> {
   path?: string;
-  value?: HTMLImageElement | string | null;
+  value?: {
+    src: HTMLImageElement | string | null;
+    type?: string;
+    extension?: string;
+  };
 }
 
 /**
@@ -24,7 +32,7 @@ export const VarImage: FC<IVarImageProps> = ({
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const deleteAction = useCallback(
-    () => setCurrentValue(null),
+    () => setCurrentValue({ src: null }),
     [setCurrentValue]
   );
 
@@ -34,7 +42,8 @@ export const VarImage: FC<IVarImageProps> = ({
       if (!files || !files.length) return;
       const file = files[0];
       const url = URL.createObjectURL(file);
-      setCurrentValue(url);
+      const extension = file.name.split('.')?.pop()?.toLowerCase();
+      setCurrentValue({ src: url, type: file.type, extension: extension });
     },
     [setCurrentValue]
   );
@@ -43,26 +52,26 @@ export const VarImage: FC<IVarImageProps> = ({
     <VarBase label={label} disabled={disabled} className={className}>
       <div className="react-var-ui-image">
         <div className="react-var-ui-image-wrapper">
-          {currentValue == null ? (
+          {currentValue == null || currentValue.src == null ? (
             <IconImageSelect></IconImageSelect>
           ) : (
             <img
               className="react-var-ui-image-wrapper-preview"
               src={
-                currentValue instanceof HTMLImageElement
-                  ? currentValue.src
-                  : currentValue
+                currentValue.src instanceof HTMLImageElement
+                  ? currentValue.src.src
+                  : currentValue.src
               }
               alt="preview"
             />
           )}
-          <input type="file" onChange={onFileChange}/>
+          <input type="file" onChange={onFileChange} />
         </div>
-        {currentValue != null ? (
+        {currentValue == null || currentValue.src == null ? null : (
           <span className="react-var-ui-image-delete" onClick={deleteAction}>
             删除
           </span>
-        ) : null}
+        )}
       </div>
     </VarBase>
   );

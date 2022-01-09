@@ -761,14 +761,23 @@ var VarImage = function VarImage(_ref) {
       setCurrentValue = _useVarUIValue[1];
 
   var deleteAction = useCallback(function () {
-    return setCurrentValue(null);
+    return setCurrentValue({
+      src: null
+    });
   }, [setCurrentValue]);
   var onFileChange = useCallback(function (event) {
+    var _file$name$split, _file$name$split$pop;
+
     var files = event == null ? void 0 : event.target.files;
     if (!files || !files.length) return;
     var file = files[0];
     var url = URL.createObjectURL(file);
-    setCurrentValue(url);
+    var extension = (_file$name$split = file.name.split('.')) == null ? void 0 : (_file$name$split$pop = _file$name$split.pop()) == null ? void 0 : _file$name$split$pop.toLowerCase();
+    setCurrentValue({
+      src: url,
+      type: file.type,
+      extension: extension
+    });
   }, [setCurrentValue]);
   return React.createElement(VarBase, {
     label: label,
@@ -778,17 +787,17 @@ var VarImage = function VarImage(_ref) {
     className: "react-var-ui-image"
   }, React.createElement("div", {
     className: "react-var-ui-image-wrapper"
-  }, currentValue == null ? React.createElement(IconImageSelect, null) : React.createElement("img", {
+  }, currentValue == null || currentValue.src == null ? React.createElement(IconImageSelect, null) : React.createElement("img", {
     className: "react-var-ui-image-wrapper-preview",
-    src: currentValue instanceof HTMLImageElement ? currentValue.src : currentValue,
+    src: currentValue.src instanceof HTMLImageElement ? currentValue.src.src : currentValue.src,
     alt: "preview"
   }), React.createElement("input", {
     type: "file",
     onChange: onFileChange
-  })), currentValue != null ? React.createElement("span", {
+  })), currentValue == null || currentValue.src == null ? null : React.createElement("span", {
     className: "react-var-ui-image-delete",
     onClick: deleteAction
-  }, "\u5220\u9664") : null));
+  }, "\u5220\u9664")));
 };
 
 /**

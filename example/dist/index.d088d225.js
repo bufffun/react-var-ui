@@ -394,7 +394,7 @@ var _indexScss = require("./index.scss");
 var _ = require("../.");
 const App = ()=>{
     const image = new Image();
-    image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+    image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
     const [values, setValues] = _react.useState({
         toggle: true,
         color: '#FF0000',
@@ -408,7 +408,9 @@ const App = ()=>{
             0,
             0
         ],
-        image: image
+        image: {
+            src: image
+        }
     });
     const colorChange = (path, value)=>{
         console.log(path);
@@ -417,27 +419,27 @@ const App = ()=>{
     return(/*#__PURE__*/ _react.createElement("div", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 45
+            lineNumber: 46
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("h1", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 46
+            lineNumber: 47
         },
         __self: undefined
     }, "VarUI example"), /*#__PURE__*/ _react.createElement("div", {
         className: "example",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 47
+            lineNumber: 48
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
         className: "wrapper",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 48
+            lineNumber: 49
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarUI, {
@@ -445,14 +447,14 @@ const App = ()=>{
         values: values,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 49
+            lineNumber: 50
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarCategory, {
         label: "Example",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 50
+            lineNumber: 51
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -492,6 +494,7 @@ const App = ()=>{
     }), /*#__PURE__*/ _react.createElement(_.VarImage, {
         label: "VarImage",
         path: "image",
+        onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
             lineNumber: 56
@@ -25506,16 +25509,24 @@ _c15 = IconImageSelect;
     var label = _ref.label, disabled = _ref.disabled, path = _ref.path, value = _ref.value, onChange = _ref.onChange, className = _ref.className;
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var deleteAction = React.useCallback(function() {
-        return setCurrentValue(null);
+        return setCurrentValue({
+            src: null
+        });
     }, [
         setCurrentValue
     ]);
     var onFileChange = React.useCallback(function(event) {
+        var _file$name$split, _file$name$split$pop;
         var files = event == null ? void 0 : event.target.files;
         if (!files || !files.length) return;
         var file = files[0];
         var url = URL.createObjectURL(file);
-        setCurrentValue(url);
+        var extension = (_file$name$split = file.name.split('.')) == null ? void 0 : (_file$name$split$pop = _file$name$split.pop()) == null ? void 0 : _file$name$split$pop.toLowerCase();
+        setCurrentValue({
+            src: url,
+            type: file.type,
+            extension: extension
+        });
     }, [
         setCurrentValue
     ]);
@@ -25527,9 +25538,9 @@ _c15 = IconImageSelect;
         className: "react-var-ui-image"
     }, React__default.createElement("div", {
         className: "react-var-ui-image-wrapper"
-    }, currentValue == null ? React__default.createElement(IconImageSelect, null) : React__default.createElement("img", {
+    }, currentValue == null || currentValue.src == null ? React__default.createElement(IconImageSelect, null) : React__default.createElement("img", {
         className: "react-var-ui-image-wrapper-preview",
-        src: currentValue instanceof HTMLImageElement ? currentValue.src : currentValue,
+        src: currentValue.src instanceof HTMLImageElement ? currentValue.src.src : currentValue.src,
         alt: "preview"
     }), React__default.createElement("input", {
         type: "file",
