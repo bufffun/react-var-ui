@@ -487,6 +487,8 @@ var VarSlider = function VarSlider(_ref) {
 
     (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
       return e.preventDefault();
+    }, {
+      passive: false
     });
   }, []);
   return React__default.createElement(VarBase, {
