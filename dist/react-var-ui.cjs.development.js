@@ -125,11 +125,15 @@ var VarAngle = function VarAngle(_ref) {
   }, [setCurrentValue]);
 
   var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition),
-      events = _usePointerDragSimple.events; // useEffect(() => {
-  //   controlRef.current?.addEventListener('wheel', e => e.preventDefault());
-  // }, []);
+      events = _usePointerDragSimple.events;
 
+  React.useEffect(function () {
+    var _controlRef$current;
 
+    (_controlRef$current = controlRef.current) == null ? void 0 : _controlRef$current.addEventListener('wheel', function (e) {
+      return e.preventDefault();
+    });
+  }, []);
   return React__default.createElement(VarBase, {
     label: label,
     disabled: disabled,
@@ -148,7 +152,6 @@ var VarAngle = function VarAngle(_ref) {
       return typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue);
     },
     onWheel: function onWheel(e) {
-      e.preventDefault();
       setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
     },
     title: "Angle"
