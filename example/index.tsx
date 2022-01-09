@@ -36,6 +36,11 @@ const App = () => {
     image : image
   });
 
+  const colorChange = (path : any, value :any) => {
+    console.log(path);
+    console.log(value);
+  };
+
   return (
     <div>
       <h1>VarUI example</h1>
@@ -44,7 +49,7 @@ const App = () => {
           <VarUI updateValues={setValues} values={values}>
             <VarCategory label="Example">
           
-              <VarColor label="VarColor" path="color" />
+              <VarColor label="VarColor" path="color" onChange={colorChange} />
               <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
               <VarDisplay label="VarDisplay" path="color" />
               <VarToggle label="VarToggle" path="toggle" />

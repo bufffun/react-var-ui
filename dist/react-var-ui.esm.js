@@ -26,7 +26,7 @@ function useVarUIValue(path, fallbackValue, onChange) {
       context.setValue(path, value);
     }
 
-    onChange == null ? void 0 : onChange(path ? path : undefined, value);
+    onChange == null ? void 0 : onChange(path, value);
   }, [path, context, onChange]);
   return [value, setValue];
 }

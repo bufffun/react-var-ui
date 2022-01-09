@@ -33,8 +33,7 @@ export function useVarUIValue<T>(
       if (path && context) {
         context.setValue(path, value);
       }
-
-      onChange?.(path? path: undefined, value);
+      onChange?.(path, value);
     },
     [path, context, onChange]
   );

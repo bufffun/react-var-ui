@@ -12,6 +12,8 @@
 }
 .react-var-ui-image-wrapper {
   position: relative;
+  height: 36px;
+  width: 36px;
 }
 .react-var-ui-image-wrapper-preview {
   height: 36px;
@@ -28,6 +30,7 @@
 }
 .react-var-ui-image-delete {
   margin-left: 14px;
+  cursor: pointer;
 }
 .react-var-ui-category {
   padding-bottom: 1rem;
@@ -56,6 +59,9 @@
   height: 1.2rem;
   border-radius: 0.2rem;
 }
+.react-var-ui-color-value {
+  width: 3.75rem;
+}
 .react-var-ui-color-swatch {
   border-radius: 0.2rem;
   display: inline-block;
@@ -75,8 +81,8 @@
 }
 .react-var-ui-toggle {
   position: relative;
-  width: 2.5rem;
-  height: 1.2rem;
+  width: 2.125rem;
+  height: 1.125rem;
 }
 .react-var-ui-toggle-helper {
   position: absolute;
@@ -84,19 +90,19 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--react-var-ui-input-background-color, #353542);
+  background: var(--react-var-ui-accent-color, #77f) !important;
   border-radius: 0.2rem;
   transition: 0.2s ease-in-out all;
   cursor: pointer;
 }
 .react-var-ui-toggle-helper:before {
   position: absolute;
-  height: 0.8rem;
-  width: 0.8rem;
-  left: 0.3rem;
-  top: 0.2rem;
-  border-radius: 1rem;
-  background-color: var(--react-var-ui-foreground-color, #ddd);
+  height: 0.875rem;
+  width: 0.9375rem;
+  left: 0.1rem;
+  top: 0.1rem;
+  border-radius: 0.375rem;
+  background-color: #fff;
   content: "";
   transition: 0.2s ease-in-out all;
 }
@@ -106,10 +112,10 @@
   opacity: 0.01;
 }
 .react-var-ui-toggle input:checked + .react-var-ui-toggle-helper {
-  background: var(--react-var-ui-accent-color, #77f) !important;
+  background: #0DBE54 !important;
 }
 .react-var-ui-toggle input:checked + .react-var-ui-toggle-helper:before {
-  transform: translateX(1.1rem);
+  transform: translateX(0.9rem);
 }
 .react-var-ui-select select {
   width: 100%;
@@ -205,7 +211,7 @@
 }
 .react-var-ui-slider input, .react-var-ui-number input {
   width: 2.5rem;
-  background: var(--react-var-ui-label-background-normal-color, #22222a);
+  background: #383C4A;
   border: none;
   -moz-appearance: textfield;
   color: var(--react-var-ui-foreground-color, #ddd);
