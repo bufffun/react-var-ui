@@ -125,15 +125,11 @@ var VarAngle = function VarAngle(_ref) {
   }, [setCurrentValue]);
 
   var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition),
-      events = _usePointerDragSimple.events;
+      events = _usePointerDragSimple.events; // useEffect(() => {
+  //   controlRef.current?.addEventListener('wheel', e => e.preventDefault());
+  // }, []);
 
-  React.useEffect(function () {
-    var _controlRef$current;
 
-    (_controlRef$current = controlRef.current) == null ? void 0 : _controlRef$current.addEventListener('wheel', function (e) {
-      return e.preventDefault();
-    });
-  }, []);
   return React__default.createElement(VarBase, {
     label: label,
     disabled: disabled,
@@ -152,6 +148,7 @@ var VarAngle = function VarAngle(_ref) {
       return typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue);
     },
     onWheel: function onWheel(e) {
+      e.preventDefault();
       setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
     },
     title: "Angle"
@@ -485,7 +482,8 @@ var VarSlider = function VarSlider(_ref) {
   React.useEffect(function () {
     var _sliderRef$current;
 
-    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (_) {// e.preventDefault()
+    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
+      return e.preventDefault();
     }, {
       passive: false
     });

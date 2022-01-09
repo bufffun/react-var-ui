@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useCallback, createContext, useRef, useEffect, useState } from 'react';
+import React, { useContext, useMemo, useCallback, createContext, useRef, useState, useEffect } from 'react';
 import cloneDeep from 'lodash.clonedeep';
 import set from 'lodash.set';
 import result from 'lodash.result';
@@ -118,15 +118,11 @@ var VarAngle = function VarAngle(_ref) {
   }, [setCurrentValue]);
 
   var _usePointerDragSimple = usePointerDragSimple(updatePosition),
-      events = _usePointerDragSimple.events;
+      events = _usePointerDragSimple.events; // useEffect(() => {
+  //   controlRef.current?.addEventListener('wheel', e => e.preventDefault());
+  // }, []);
 
-  useEffect(function () {
-    var _controlRef$current;
 
-    (_controlRef$current = controlRef.current) == null ? void 0 : _controlRef$current.addEventListener('wheel', function (e) {
-      return e.preventDefault();
-    });
-  }, []);
   return React.createElement(VarBase, {
     label: label,
     disabled: disabled,
@@ -145,6 +141,7 @@ var VarAngle = function VarAngle(_ref) {
       return typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue);
     },
     onWheel: function onWheel(e) {
+      e.preventDefault();
       setCurrentValue(wrap(currentValue + 0.5 * (e.deltaY < 0 ? -1 : 1)));
     },
     title: "Angle"
@@ -478,7 +475,8 @@ var VarSlider = function VarSlider(_ref) {
   useEffect(function () {
     var _sliderRef$current;
 
-    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (_) {// e.preventDefault()
+    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
+      return e.preventDefault();
     }, {
       passive: false
     });
