@@ -109,7 +109,9 @@ export const VarSlider: FC<IVarSliderProps> = ({
   const { events } = usePointerDragSimple(updatePosition);
 
   useEffect(() => {
-    sliderRef.current?.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+    sliderRef.current?.addEventListener('wheel', e =>  {
+      e.cancelable && e.preventDefault()
+    }, { passive: false });
   }, []);
 
   return (

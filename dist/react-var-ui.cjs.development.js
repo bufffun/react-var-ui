@@ -486,7 +486,7 @@ var VarSlider = function VarSlider(_ref) {
     var _sliderRef$current;
 
     (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
-      return e.preventDefault();
+      e.cancelable && e.preventDefault();
     }, {
       passive: false
     });
