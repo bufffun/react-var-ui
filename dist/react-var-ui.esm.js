@@ -478,8 +478,7 @@ var VarSlider = function VarSlider(_ref) {
   useEffect(function () {
     var _sliderRef$current;
 
-    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
-      e.cancelable && e.preventDefault();
+    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (_) {// e.preventDefault()
     }, {
       passive: false
     });
