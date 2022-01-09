@@ -20,7 +20,7 @@ export const VarUIContext = createContext<IVarUIContext | undefined>(undefined);
 export function useVarUIValue<T>(
   path?: string,
   fallbackValue?: T,
-  onChange?: (value: T) => void
+  onChange?: (path: string | undefined, value: T) => void
 ): [T, (value: T) => void] {
   const context = useContext(VarUIContext);
   const value = useMemo(() => context?.getValue(path) ?? fallbackValue, [
@@ -34,7 +34,7 @@ export function useVarUIValue<T>(
         context.setValue(path, value);
       }
 
-      onChange?.(value);
+      onChange?.(path? path: undefined, value);
     },
     [path, context, onChange]
   );

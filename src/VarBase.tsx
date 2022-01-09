@@ -43,7 +43,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
    * On change event, called with the new value if provided.
    * In most cases you aren't going to need this.
    */
-  onChange?: (value: T) => void;
+  onChange?: (path: string |undefined, value: T) => void;
 }
 
 /**

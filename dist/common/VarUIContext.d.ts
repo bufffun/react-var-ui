@@ -13,4 +13,4 @@ export declare const VarUIContext: import("react").Context<IVarUIContext | undef
  * @param onChange
  * @returns [value: T, setValue: (value: T) => void]
  */
-export declare function useVarUIValue<T>(path?: string, fallbackValue?: T, onChange?: (value: T) => void): [T, (value: T) => void];
+export declare function useVarUIValue<T>(path?: string, fallbackValue?: T, onChange?: (path: string | undefined, value: T) => void): [T, (value: T) => void];

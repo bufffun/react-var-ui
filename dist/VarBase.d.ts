@@ -35,7 +35,7 @@ export interface IVarBaseInputProps<T> extends IVarBaseProps {
      * On change event, called with the new value if provided.
      * In most cases you aren't going to need this.
      */
-    onChange?: (value: T) => void;
+    onChange?: (path: string | undefined, value: T) => void;
 }
 /**
  * Base VarUI input component. Doesn't do anything besides displaying the label.
