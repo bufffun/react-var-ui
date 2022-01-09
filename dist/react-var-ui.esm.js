@@ -605,7 +605,7 @@ var VarToggle = function VarToggle(_ref) {
     title: "Toggle"
   }, React.createElement("input", {
     type: "checkbox",
-    checked: currentValue,
+    checked: currentValue || false,
     onChange: function onChange(e) {
       return setCurrentValue(e.target.checked);
     }
@@ -760,11 +760,16 @@ var VarImage = function VarImage(_ref) {
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
+  var inputRef = useRef(null);
   var deleteAction = useCallback(function () {
-    return setCurrentValue({
+    setCurrentValue({
       src: null
     });
-  }, [setCurrentValue]);
+
+    if (inputRef && inputRef.current) {
+      inputRef.current.value = "";
+    }
+  }, [setCurrentValue, inputRef]);
   var onFileChange = useCallback(function (event) {
     var _file$name$split, _file$name$split$pop;
 
@@ -792,7 +797,9 @@ var VarImage = function VarImage(_ref) {
     src: currentValue.src instanceof HTMLImageElement ? currentValue.src.src : currentValue.src,
     alt: "preview"
   }), React.createElement("input", {
+    ref: inputRef,
     type: "file",
+    id: '',
     onChange: onFileChange
   })), currentValue == null || currentValue.src == null ? null : React.createElement("span", {
     className: "react-var-ui-image-delete",

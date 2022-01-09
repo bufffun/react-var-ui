@@ -25508,12 +25508,15 @@ _c15 = IconImageSelect;
     _s11();
     var label = _ref.label, disabled = _ref.disabled, path = _ref.path, value = _ref.value, onChange = _ref.onChange, className = _ref.className;
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
+    var inputRef = React.useRef(null);
     var deleteAction = React.useCallback(function() {
-        return setCurrentValue({
+        setCurrentValue({
             src: null
         });
+        if (inputRef && inputRef.current) inputRef.current.value = "";
     }, [
-        setCurrentValue
+        setCurrentValue,
+        inputRef
     ]);
     var onFileChange = React.useCallback(function(event) {
         var _file$name$split, _file$name$split$pop;
@@ -25543,14 +25546,16 @@ _c15 = IconImageSelect;
         src: currentValue.src instanceof HTMLImageElement ? currentValue.src.src : currentValue.src,
         alt: "preview"
     }), React__default.createElement("input", {
+        ref: inputRef,
         type: "file",
+        id: '',
         onChange: onFileChange
-    })), currentValue != null ? React__default.createElement("span", {
+    })), currentValue == null || currentValue.src == null ? null : React__default.createElement("span", {
         className: "react-var-ui-image-delete",
         onClick: deleteAction
-    }, "\u5220\u9664") : null));
+    }, "\u5220\u9664")));
 };
-_s11(VarImage, "UuoJv72YOrNC9jIAZlVB60wAyd4=", false, function() {
+_s11(VarImage, "gCkZNZXM+QGpB4KiW2jym9JO5AA=", false, function() {
     return [
         useVarUIValue
     ];

@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback, useRef } from 'react';
 import { IconImageSelect } from './icons/IconImageSelect';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -30,10 +30,15 @@ export const VarImage: FC<IVarImageProps> = ({
   className,
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const deleteAction = useCallback(
-    () => setCurrentValue({ src: null }),
-    [setCurrentValue]
+    () =>  {
+      setCurrentValue({ src: null });
+      if (inputRef && inputRef.current) {
+        inputRef.current.value = "";
+      }
+    },
+    [setCurrentValue, inputRef]
   );
 
   const onFileChange = useCallback(
@@ -65,7 +70,7 @@ export const VarImage: FC<IVarImageProps> = ({
               alt="preview"
             />
           )}
-          <input type="file" onChange={onFileChange} />
+          <input ref={inputRef} type="file" id='' onChange={onFileChange} />
         </div>
         {currentValue == null || currentValue.src == null ? null : (
           <span className="react-var-ui-image-delete" onClick={deleteAction}>
