@@ -35,6 +35,8 @@ $transition-time: 0.2s;
     align-items: center;
     &-wrapper {
       position: relative;
+      height: 36px;
+      width: 36px;
 
       &-preview {
         height: 36px;
@@ -89,6 +91,10 @@ $transition-time: 0.2s;
       border-radius: 0.2rem;
     }
 
+    &-value {
+      width: 3.75rem;
+    }
+
     &-swatch {
       border-radius: 0.2rem;
       display: inline-block;
@@ -123,7 +129,7 @@ $transition-time: 0.2s;
       left: 0;
       right: 0;
       bottom: 0;
-      background: $input-background-color;
+      background: #0DBE54;
       border-radius: 0.2rem;
       transition: $transition-time ease-in-out all;
       cursor: pointer;
@@ -273,7 +279,7 @@ $transition-time: 0.2s;
 
     input {
       width: 2.5rem;
-      background: $label-background-normal-color;
+      background: #383C4A;
       border: none;
       -moz-appearance: textfield;
       color: $foreground-color;
