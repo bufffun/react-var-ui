@@ -203,14 +203,35 @@ var VarColor = function VarColor(_ref) {
       show = _useState[0],
       setShow = _useState[1];
 
+  var handleCloseClick = React.useCallback(function (event) {
+    var _event$target;
+
+    var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.sketch-picker');
+    var has_picker = document.getElementsByClassName("sketch-picker").length != 0;
+
+    if (has_picker && show && popup == null) {
+      setShow(false);
+    }
+  }, [show, setShow]);
+  React.useEffect(function () {
+    if (show) {
+      window.addEventListener('click', handleCloseClick);
+    } else {
+      window.removeEventListener('click', handleCloseClick);
+    }
+
+    return function () {
+      return window.removeEventListener("click", handleCloseClick);
+    };
+  }, [show]);
   var toggle = React.useCallback(function () {
-    return setShow(function (show) {
+    setShow(function (show) {
       return !show;
     });
-  }, [setShow]);
-  var close = React.useCallback(function () {
-    return setShow(false);
-  }, [setShow]);
+  }, [setShow]); // const close = useCallback(() => {
+  //   setShow(false);
+  // }, [setShow]);
+
   return React__default.createElement(VarBase, {
     label: label,
     disabled: disabled,
@@ -230,10 +251,7 @@ var VarColor = function VarColor(_ref) {
     }
   })), show ? React__default.createElement("div", {
     className: "react-var-ui-color-popover"
-  }, React__default.createElement("div", {
-    className: "react-var-ui-color-cover",
-    onClick: close
-  }), React__default.createElement(reactColor.SketchPicker, {
+  }, React__default.createElement(reactColor.SketchPicker, {
     color: currentValue,
     onChange: function onChange(result) {
       if (alpha) {

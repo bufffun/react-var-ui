@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useState, useEffect } from 'react';
 import { SketchPicker } from 'react-color';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -27,8 +27,31 @@ export const VarColor: FC<IVarColorProps> = ({
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
 
   const [show, setShow] = useState(false);
-  const toggle = useCallback(() => setShow(show => !show), [setShow]);
-  const close = useCallback(() => setShow(false), [setShow]);
+
+  const handleCloseClick = useCallback((event: MouseEvent) => {
+    const popup = (event.target as Element)?.closest('.sketch-picker');
+    const has_picker = document.getElementsByClassName("sketch-picker").length != 0;
+    if (has_picker && show && popup == null) {
+      setShow(false);
+    }
+  }, [show, setShow]);
+
+  useEffect(() => {
+    if (show) {
+      window.addEventListener('click', handleCloseClick);
+    } else {
+      window.removeEventListener('click', handleCloseClick);
+    }
+    return () => window.removeEventListener("click", handleCloseClick);
+}, [show]);
+
+  const toggle = useCallback(() => {
+    setShow(show => !show);
+  }, [setShow]);
+
+  // const close = useCallback(() => {
+  //   setShow(false);
+  // }, [setShow]);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
@@ -44,7 +67,6 @@ export const VarColor: FC<IVarColorProps> = ({
           </div>
           {show ? (
             <div className="react-var-ui-color-popover">
-              <div className="react-var-ui-color-cover" onClick={close} />
               <SketchPicker
                 color={currentValue}
                 onChange={result => {
