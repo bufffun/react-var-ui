@@ -24962,18 +24962,39 @@ _c4 = VarButton;
     var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, alpha = _ref.alpha, disabled = _ref.disabled, className = _ref.className;
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var _useState = React.useState(false), show = _useState[0], setShow = _useState[1];
+    var handleCloseClick = React.useCallback(function(event) {
+        var _event$target;
+        var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.sketch-picker');
+        var has_picker = document.getElementsByClassName("sketch-picker").length != 0;
+        if (has_picker && show && popup == null) setShow(false);
+        console.log("aaaa");
+    }, [
+        show,
+        setShow
+    ]);
+    React.useEffect(function() {
+        if (show) {
+            console.log("add");
+            window.addEventListener('click', handleCloseClick);
+        } else {
+            console.log("remove");
+            window.removeEventListener('click', handleCloseClick);
+        }
+        return function() {
+            return window.removeEventListener("click", handleCloseClick);
+        };
+    }, [
+        show
+    ]);
     var toggle = React.useCallback(function() {
-        return setShow(function(show1) {
+        setShow(function(show1) {
             return !show1;
         });
     }, [
         setShow
-    ]);
-    var close = React.useCallback(function() {
-        return setShow(false);
-    }, [
-        setShow
-    ]);
+    ]); // const close = useCallback(() => {
+    //   setShow(false);
+    // }, [setShow]);
     return React__default.createElement(VarBase, {
         label: label,
         disabled: disabled,
@@ -24993,10 +25014,7 @@ _c4 = VarButton;
         }
     })), show ? React__default.createElement("div", {
         className: "react-var-ui-color-popover"
-    }, React__default.createElement("div", {
-        className: "react-var-ui-color-cover",
-        onClick: close
-    }), React__default.createElement(reactColor.SketchPicker, {
+    }, React__default.createElement(reactColor.SketchPicker, {
         color: currentValue,
         onChange: function onChange1(result1) {
             if (alpha) {
@@ -25009,7 +25027,7 @@ _c4 = VarButton;
         disableAlpha: !alpha
     })) : null)));
 };
-_s3(VarColor, "sI+b9BEIBC9DUG1qYxELRbn3+x0=", false, function() {
+_s3(VarColor, "2yxRgii0wo2MwrFOdNJAGUKDVK0=", false, function() {
     return [
         useVarUIValue
     ];
@@ -25238,6 +25256,8 @@ _c10 = VarSelect;
         var _sliderRef$current;
         (_sliderRef$current = sliderRef.current) == null || _sliderRef$current.addEventListener('wheel', function(e) {
             return e.preventDefault();
+        }, {
+            passive: false
         });
     }, []);
     return React__default.createElement(VarBase, {
@@ -25352,7 +25372,7 @@ _c12 = VarString;
         title: "Toggle"
     }, React__default.createElement("input", {
         type: "checkbox",
-        checked: currentValue,
+        checked: currentValue || false,
         onChange: function onChange1(e) {
             return setCurrentValue(e.target.checked);
         }
