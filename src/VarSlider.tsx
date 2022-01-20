@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { FC, useCallback, useMemo, useRef } from 'react';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -108,9 +108,9 @@ export const VarSlider: FC<IVarSliderProps> = ({
 
   const { events } = usePointerDragSimple(updatePosition);
 
-  useEffect(() => {
-    sliderRef.current?.addEventListener('wheel', e => e.preventDefault(), { passive: false });
-  }, []);
+  // useEffect(() => {
+  //   sliderRef.current?.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+  // }, []);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
@@ -122,9 +122,6 @@ export const VarSlider: FC<IVarSliderProps> = ({
           onDoubleClick={() =>
             typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue)
           }
-          onWheel={e => {
-            e.deltaY < 0 ? increaseValue() : decreaseValue();
-          }}
           title="Slider"
           {...events}
         >
