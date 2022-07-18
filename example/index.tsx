@@ -49,7 +49,9 @@ const App = () => {
         <div className="wrapper">
           <VarUI updateValues={setValues} values={values}>
             <VarCategory label="Example">
+              <VarCategory label="Example" showDash={true}>
               <VarColor label="VarColor" path="color" onChange={colorChange} />
+              </VarCategory>
               <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
               <VarDisplay label="VarDisplay" path="color" />
               <VarToggle label="VarToggle" path="toggle" />

@@ -64,9 +64,23 @@ $transition-time: 0.2s;
     &-title {
       color: $foreground-color;
       text-transform: uppercase;
-      font-size: 0.875rem;
-      padding: 0.4rem;
+      font-size: 1.125rem;
+      padding: 1.25rem;
       user-select: none;
+      position: relative;
+      
+      &-dash{
+        &:before {
+          content: "";
+          border-top: 1px dashed #6A7187;
+          width: 100%;
+          position: absolute;
+          opacity: 0.6;
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+      }
     }
 
     padding-bottom: 1rem;
