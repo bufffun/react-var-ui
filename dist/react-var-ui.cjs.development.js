@@ -498,17 +498,11 @@ var VarSlider = function VarSlider(_ref) {
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition),
-      events = _usePointerDragSimple.events;
+      events = _usePointerDragSimple.events; // useEffect(() => {
+  //   sliderRef.current?.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+  // }, []);
 
-  React.useEffect(function () {
-    var _sliderRef$current;
 
-    (_sliderRef$current = sliderRef.current) == null ? void 0 : _sliderRef$current.addEventListener('wheel', function (e) {
-      return e.preventDefault();
-    }, {
-      passive: false
-    });
-  }, []);
   return React__default.createElement(VarBase, {
     label: label,
     disabled: disabled,
@@ -523,9 +517,6 @@ var VarSlider = function VarSlider(_ref) {
     },
     onDoubleClick: function onDoubleClick() {
       return typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue);
-    },
-    onWheel: function onWheel(e) {
-      e.deltaY < 0 ? increaseValue() : decreaseValue();
     },
     title: "Slider"
   }, events), React__default.createElement("div", {
