@@ -24,6 +24,17 @@ $transition-time: 0.2s;
 .react-var-ui {
   background: $background-color;
 
+  &-add {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    &-wrapper {
+      position: relative;
+      height: 22px;
+      width: 22px;
+    }
+  }
+
   &-disabled {
     pointer-events: none;
     opacity: 0.5;
