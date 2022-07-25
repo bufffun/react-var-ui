@@ -17,6 +17,9 @@ export * from './VarXY';
 export * from './VarImage';
 
 // Other
+export * from './VarAdd';
+export * from './VarGroup';
+export * from './VarGroupItem';
 export * from './VarCategory';
 
 // Utility

@@ -28,13 +28,17 @@ export const VarColor: FC<IVarColorProps> = ({
 
   const [show, setShow] = useState(false);
 
-  const handleCloseClick = useCallback((event: MouseEvent) => {
-    const popup = (event.target as Element)?.closest('.sketch-picker');
-    const has_picker = document.getElementsByClassName("sketch-picker").length != 0;
-    if (has_picker && show && popup == null) {
-      setShow(false);
-    }
-  }, [show, setShow]);
+  const handleCloseClick = useCallback(
+    (event: MouseEvent) => {
+      const popup = (event.target as Element)?.closest('.sketch-picker');
+      const has_picker =
+        document.getElementsByClassName('sketch-picker').length != 0;
+      if (has_picker && show && popup == null) {
+        setShow(false);
+      }
+    },
+    [show, setShow]
+  );
 
   useEffect(() => {
     if (show) {
@@ -42,8 +46,8 @@ export const VarColor: FC<IVarColorProps> = ({
     } else {
       window.removeEventListener('click', handleCloseClick);
     }
-    return () => window.removeEventListener("click", handleCloseClick);
-}, [show]);
+    return () => window.removeEventListener('click', handleCloseClick);
+  }, [show]);
 
   const toggle = useCallback(() => {
     setShow(show => !show);
