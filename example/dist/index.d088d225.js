@@ -419,27 +419,27 @@ const App = ()=>{
     return(/*#__PURE__*/ _react.createElement("div", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 46
+            lineNumber: 49
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("h1", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 47
+            lineNumber: 50
         },
         __self: undefined
     }, "VarUI example"), /*#__PURE__*/ _react.createElement("div", {
         className: "example",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 48
+            lineNumber: 51
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
         className: "wrapper",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 49
+            lineNumber: 52
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarUI, {
@@ -447,14 +447,15 @@ const App = ()=>{
         values: values,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 50
+            lineNumber: 53
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarCategory, {
         label: "Example",
+        showDash: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 51
+            lineNumber: 55
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -463,16 +464,7 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 52
-        },
-        __self: undefined
-    }), /*#__PURE__*/ _react.createElement(_.VarColor, {
-        label: "VarColor (alpha)",
-        path: "colorAlpha",
-        alpha: true,
-        __source: {
-            fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 53
+            lineNumber: 56
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
@@ -480,7 +472,7 @@ const App = ()=>{
         path: "color",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 54
+            lineNumber: 57
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarToggle, {
@@ -488,19 +480,96 @@ const App = ()=>{
         path: "toggle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 55
+            lineNumber: 58
         },
         __self: undefined
-    }), /*#__PURE__*/ _react.createElement(_.VarImage, {
+    })), /*#__PURE__*/ _react.createElement(_.VarColor, {
+        label: "VarColor (alpha)",
+        path: "colorAlpha",
+        alpha: true,
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 60
+        },
+        __self: undefined
+    }), /*#__PURE__*/ _react.createElement(_.VarAdd, {
+        label: "ADD",
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 61
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement("div", {
+        style: {
+            width: '100px',
+            height: '100px',
+            background: '#ff0000'
+        },
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 62
+        },
+        __self: undefined
+    })), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
+        label: "VarDisplay",
+        path: "color",
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 70
+        },
+        __self: undefined
+    }), /*#__PURE__*/ _react.createElement(_.VarGroup, {
+        label: "Group",
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 71
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 72
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarToggle, {
+        label: "VarToggle",
+        path: "toggle",
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 73
+        },
+        __self: undefined
+    })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 75
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarColor, {
+        label: "VarColor (alpha)",
+        path: "colorAlpha",
+        alpha: true,
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 76
+        },
+        __self: undefined
+    })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 78
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarImage, {
         label: "VarImage",
         path: "image",
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 56
+            lineNumber: 79
         },
         __self: undefined
-    }), /*#__PURE__*/ _react.createElement(_.VarSelect, {
+    }))), /*#__PURE__*/ _react.createElement(_.VarSelect, {
         path: "select",
         label: "VarSelect",
         options: [
@@ -515,7 +584,7 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 57
+            lineNumber: 87
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -526,7 +595,7 @@ const App = ()=>{
         step: 0.1,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 65
+            lineNumber: 95
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -539,7 +608,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 72
+            lineNumber: 102
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -551,7 +620,7 @@ const App = ()=>{
         showInput: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 81
+            lineNumber: 111
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -563,7 +632,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 89
+            lineNumber: 119
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -575,7 +644,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 97
+            lineNumber: 127
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -583,7 +652,7 @@ const App = ()=>{
         path: "number",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 105
+            lineNumber: 135
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -591,7 +660,7 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 106
+            lineNumber: 136
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -600,7 +669,7 @@ const App = ()=>{
         multiline: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 107
+            lineNumber: 137
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarAngle, {
@@ -608,7 +677,7 @@ const App = ()=>{
         path: "angle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 112
+            lineNumber: 138
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarXY, {
@@ -616,7 +685,7 @@ const App = ()=>{
         path: "xy",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 113
+            lineNumber: 139
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -625,7 +694,7 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 114
+            lineNumber: 140
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -635,15 +704,15 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 118
+            lineNumber: 144
         },
         __self: undefined
-    })))))));
+    }))))));
 };
 _reactDom.render(/*#__PURE__*/ _react.createElement(App, {
     __source: {
         fileName: "/Users/renes/react-var-ui/example/index.tsx",
-        lineNumber: 150
+        lineNumber: 176
     },
     __self: undefined
 }), document.getElementById('root'));
@@ -24779,7 +24848,7 @@ var prevRefreshSig = window.$RefreshSig$;
 helpers.prelude(module);
 
 try {
-var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$(), _s4 = $RefreshSig$(), _s5 = $RefreshSig$(), _s6 = $RefreshSig$(), _s7 = $RefreshSig$(), _s8 = $RefreshSig$(), _s9 = $RefreshSig$(), _s10 = $RefreshSig$(), _s11 = $RefreshSig$();
+var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$(), _s4 = $RefreshSig$(), _s5 = $RefreshSig$(), _s6 = $RefreshSig$(), _s7 = $RefreshSig$(), _s8 = $RefreshSig$(), _s9 = $RefreshSig$(), _s10 = $RefreshSig$(), _s11 = $RefreshSig$(), _s12 = $RefreshSig$();
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -24965,23 +25034,17 @@ _c4 = VarButton;
     var handleCloseClick = React.useCallback(function(event) {
         var _event$target;
         var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.sketch-picker');
-        var has_picker = document.getElementsByClassName("sketch-picker").length != 0;
+        var has_picker = document.getElementsByClassName('sketch-picker').length != 0;
         if (has_picker && show && popup == null) setShow(false);
-        console.log("aaaa");
     }, [
         show,
         setShow
     ]);
     React.useEffect(function() {
-        if (show) {
-            console.log("add");
-            window.addEventListener('click', handleCloseClick);
-        } else {
-            console.log("remove");
-            window.removeEventListener('click', handleCloseClick);
-        }
+        if (show) window.addEventListener('click', handleCloseClick);
+        else window.removeEventListener('click', handleCloseClick);
         return function() {
-            return window.removeEventListener("click", handleCloseClick);
+            return window.removeEventListener('click', handleCloseClick);
         };
     }, [
         show
@@ -25251,15 +25314,9 @@ _c10 = VarSelect;
         max,
         step
     ]);
-    var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition), events = _usePointerDragSimple.events;
-    React.useEffect(function() {
-        var _sliderRef$current;
-        (_sliderRef$current = sliderRef.current) == null || _sliderRef$current.addEventListener('wheel', function(e) {
-            return e.preventDefault();
-        }, {
-            passive: false
-        });
-    }, []);
+    var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition), events = _usePointerDragSimple.events; // useEffect(() => {
+    //   sliderRef.current?.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+    // }, []);
     return React__default.createElement(VarBase, {
         label: label,
         disabled: disabled,
@@ -25274,9 +25331,6 @@ _c10 = VarSelect;
         },
         onDoubleClick: function onDoubleClick() {
             return typeof defaultValue !== 'undefined' && setCurrentValue(defaultValue);
-        },
-        onWheel: function onWheel(e) {
-            e.deltaY < 0 ? increaseValue() : decreaseValue();
         },
         title: "Slider"
     }, events), React__default.createElement("div", {
@@ -25302,7 +25356,7 @@ _c10 = VarSelect;
         onClick: decreaseValue
     }, React__default.createElement(IconDown, null)))));
 };
-_s7(VarSlider, "ayQ+J2YDEpWPSo+YHKlnSsCMdn8=", false, function() {
+_s7(VarSlider, "MrFyhrrf3rWpCmgEvO7t0XQlEVc=", false, function() {
     return [
         useVarUIValue,
         reactUsePointerDrag.usePointerDragSimple
@@ -25581,23 +25635,149 @@ _s11(VarImage, "gCkZNZXM+QGpB4KiW2jym9JO5AA=", false, function() {
     ];
 });
 _c16 = VarImage;
+var IconAdd = function IconAdd1() {
+    return React__default.createElement("svg", {
+        width: "22",
+        height: "22",
+        viewBox: "0 0 22 22",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg"
+    }, React__default.createElement("rect", {
+        x: "0.5",
+        y: "0.5",
+        width: "21",
+        height: "21",
+        rx: "3.5",
+        stroke: "#515151"
+    }), React__default.createElement("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M11.5455 10.4545V5H9.90909V10.4545H5V12.0909H9.90909V17H11.5455V12.0909H17V10.4545H11.5455Z",
+        fill: "#515151"
+    }));
+};
+_c17 = IconAdd;
+/**
+ * Button component. Only provides a onClick property.
+ */ var VarAdd = function VarAdd1(_ref) {
+    _s12();
+    var label = _ref.label, didClick = _ref.didClick, disabled = _ref.disabled, className = _ref.className, children = _ref.children;
+    var _useState = React.useState(false), show = _useState[0], setShow = _useState[1];
+    var handleCloseClick = React.useCallback(function(event) {
+        var _event$target;
+        var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.react-var-ui-add-popover');
+        var has_picker = document.getElementsByClassName('react-var-ui-add-popover').length != 0;
+        if (has_picker && show && popup == null) setShow(false);
+    }, [
+        show,
+        setShow
+    ]);
+    React.useEffect(function() {
+        if (show) window.addEventListener('click', handleCloseClick);
+        else window.removeEventListener('click', handleCloseClick);
+        return function() {
+            return window.removeEventListener('click', handleCloseClick);
+        };
+    }, [
+        show
+    ]);
+    var toggle = React.useCallback(function() {
+        setShow(function(show1) {
+            return !show1;
+        });
+    }, [
+        setShow
+    ]);
+    return React__default.createElement(VarBase, {
+        label: label,
+        disabled: disabled,
+        className: className
+    }, React__default.createElement("div", {
+        className: "react-var-ui-add"
+    }, React__default.createElement("div", {
+        className: "react-var-ui-add-wrapper"
+    }, React__default.createElement("div", {
+        onClick: function onClick() {
+            toggle();
+            didClick == null || didClick();
+        }
+    }, React__default.createElement(IconAdd, null)), show ? React__default.createElement("div", {
+        className: "react-var-ui-add-popover"
+    }, children) : null)));
+};
+_s12(VarAdd, "L7ppfmzV3ez4+5SMlIxZ7dUOrCA=");
+_c18 = VarAdd;
+var IconDelete = function IconDelete1() {
+    return React__default.createElement("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 20 20",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg"
+    }, React__default.createElement("g", {
+        opacity: "0.4"
+    }, React__default.createElement("path", {
+        d: "M14.5851 6.48999V15.51H5.56006V6.48999H14.5851ZM15.5851 4.48999H4.56006C4.29484 4.48999 4.04049 4.59535 3.85295 4.78288C3.66542 4.97042 3.56006 5.22477 3.56006 5.48999V16.51C3.56006 16.6413 3.58592 16.7714 3.63618 16.8927C3.68643 17.014 3.76009 17.1242 3.85295 17.2171C3.94581 17.31 4.05605 17.3836 4.17737 17.4339C4.2987 17.4841 4.42874 17.51 4.56006 17.51H15.5851C15.7164 17.51 15.8464 17.4841 15.9677 17.4339C16.0891 17.3836 16.1993 17.31 16.2922 17.2171C16.385 17.1242 16.4587 17.014 16.5089 16.8927C16.5592 16.7714 16.5851 16.6413 16.5851 16.51V5.48999C16.5851 5.22477 16.4797 4.97042 16.2922 4.78288C16.1046 4.59535 15.8503 4.48999 15.5851 4.48999V4.48999Z",
+        fill: "#F5F8FF"
+    }), React__default.createElement("path", {
+        d: "M17.4899 4.50496H2.51494C2.24641 4.50496 1.98888 4.61163 1.799 4.80151C1.60912 4.99139 1.50244 5.24893 1.50244 5.51746C1.50244 5.78599 1.60912 6.04352 1.799 6.23341C1.98888 6.42329 2.24641 6.52996 2.51494 6.52996H17.4899C17.7585 6.52996 18.016 6.42329 18.2059 6.23341C18.3958 6.04352 18.5024 5.78599 18.5024 5.51746C18.5024 5.24893 18.3958 4.99139 18.2059 4.80151C18.016 4.61163 17.7585 4.50496 17.4899 4.50496V4.50496ZM12.5149 1.52496H7.58494C7.33518 1.54274 7.10144 1.65451 6.93079 1.83774C6.76013 2.02098 6.66525 2.26207 6.66525 2.51246C6.66525 2.76285 6.76013 3.00395 6.93079 3.18718C7.10144 3.37041 7.33518 3.48218 7.58494 3.49996H12.5099C12.6455 3.50961 12.7817 3.49124 12.9098 3.44599C13.038 3.40074 13.1555 3.32957 13.255 3.23693C13.3544 3.14429 13.4338 3.03215 13.488 2.90751C13.5423 2.78287 13.5703 2.64839 13.5703 2.51246C13.5703 2.37653 13.5423 2.24205 13.488 2.11741C13.4338 1.99277 13.3544 1.88064 13.255 1.78799C13.1555 1.69535 13.038 1.62419 12.9098 1.57893C12.7817 1.53368 12.6455 1.51531 12.5099 1.52496H12.5149Z",
+        fill: "#F5F8FF"
+    }), React__default.createElement("path", {
+        d: "M8.56006 13.5C8.29525 13.4987 8.04166 13.3929 7.8544 13.2057C7.66715 13.0184 7.56137 12.7648 7.56006 12.5V9.5C7.56137 9.23519 7.66715 8.9816 7.8544 8.79435C8.04166 8.60709 8.29525 8.50131 8.56006 8.5C8.82487 8.50131 9.07846 8.60709 9.26571 8.79435C9.45297 8.9816 9.55874 9.23519 9.56006 9.5V12.5C9.55874 12.7648 9.45297 13.0184 9.26571 13.2057C9.07846 13.3929 8.82487 13.4987 8.56006 13.5V13.5ZM11.5601 13.5C11.2952 13.4987 11.0417 13.3929 10.8544 13.2057C10.6672 13.0184 10.5614 12.7648 10.5601 12.5V9.5C10.5614 9.23519 10.6672 8.9816 10.8544 8.79435C11.0417 8.60709 11.2952 8.50131 11.5601 8.5C11.8249 8.50131 12.0785 8.60709 12.2657 8.79435C12.453 8.9816 12.5587 9.23519 12.5601 9.5V12.5C12.5587 12.7648 12.453 13.0184 12.2657 13.2057C12.0785 13.3929 11.8249 13.4987 11.5601 13.5V13.5Z",
+        fill: "#F5F8FF"
+    })));
+};
+_c19 = IconDelete;
+/**
+ * Category component for grouping inputs.
+ */ var VarGroup = function VarGroup1(_ref) {
+    var label = _ref.label, disabled = _ref.disabled, className = _ref.className, children = _ref.children, onDelete = _ref.onDelete;
+    return React__default.createElement("div", null, React__default.createElement(VarBase, {
+        label: label,
+        disabled: disabled,
+        className: className
+    }, React__default.createElement("div", {
+        className: "react-var-ui-group-wrapper"
+    }, React__default.createElement("div", {
+        className: "react-var-ui-group-wrapper-icon"
+    }, React__default.createElement("div", {
+        onClick: function onClick() {
+            onDelete == null || onDelete();
+        }
+    }, React__default.createElement(IconDelete, null))))), !!children && React__default.createElement("div", {
+        className: "react-var-ui-group"
+    }, children));
+};
+_c20 = VarGroup;
+/**
+ * Group item component inside group.
+ */ var VarGroupItem = function VarGroupItem1(_ref) {
+    var children = _ref.children;
+    return React__default.createElement("div", {
+        className: "react-var-ui-group-item"
+    }, children);
+};
+_c21 = VarGroupItem;
 /**
  * Category component for grouping inputs.
  */ var VarCategory = function VarCategory1(_ref) {
-    var label = _ref.label, className = _ref.className, children = _ref.children;
+    var label = _ref.label, className = _ref.className, showDash = _ref.showDash, children = _ref.children;
     return React__default.createElement("div", {
         className: 'react-var-ui-category ' + (className ? className : '')
     }, React__default.createElement("div", {
-        className: "react-var-ui-category-title"
+        className: 'react-var-ui-category-title ' + (showDash ? 'react-var-ui-category-title-dash' : '')
     }, label), !!children && React__default.createElement("div", null, children));
 };
-_c17 = VarCategory;
+_c22 = VarCategory;
+exports.VarAdd = VarAdd;
 exports.VarAngle = VarAngle;
 exports.VarBase = VarBase;
 exports.VarButton = VarButton;
 exports.VarCategory = VarCategory;
 exports.VarColor = VarColor;
 exports.VarDisplay = VarDisplay;
+exports.VarGroup = VarGroup;
+exports.VarGroupItem = VarGroupItem;
 exports.VarImage = VarImage;
 exports.VarNumber = VarNumber;
 exports.VarSelect = VarSelect;
@@ -25607,7 +25787,7 @@ exports.VarToggle = VarToggle;
 exports.VarUI = VarUI;
 exports.VarXY = VarXY;
 exports.useVarUIValue = useVarUIValue;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17, _c18, _c19, _c20, _c21, _c22;
 $RefreshReg$(_c, "React__default");
 $RefreshReg$(_c1, "VarUI");
 $RefreshReg$(_c2, "VarBase");
@@ -25625,7 +25805,12 @@ $RefreshReg$(_c13, "VarToggle");
 $RefreshReg$(_c14, "VarXY");
 $RefreshReg$(_c15, "IconImageSelect");
 $RefreshReg$(_c16, "VarImage");
-$RefreshReg$(_c17, "VarCategory");
+$RefreshReg$(_c17, "IconAdd");
+$RefreshReg$(_c18, "VarAdd");
+$RefreshReg$(_c19, "IconDelete");
+$RefreshReg$(_c20, "VarGroup");
+$RefreshReg$(_c21, "VarGroupItem");
+$RefreshReg$(_c22, "VarCategory");
 
   helpers.postlude(module);
 } finally {

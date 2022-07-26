@@ -8,6 +8,10 @@ export interface IVarCategoryProps {
      * Additional class names on the wrapping div element.
      */
     className?: string;
+    /**
+     * 是否在前面显示分隔符
+     */
+    showDash?: boolean;
 }
 /**
  * Category component for grouping inputs.

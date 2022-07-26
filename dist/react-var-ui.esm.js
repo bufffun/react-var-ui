@@ -200,7 +200,7 @@ var VarColor = function VarColor(_ref) {
     var _event$target;
 
     var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.sketch-picker');
-    var has_picker = document.getElementsByClassName("sketch-picker").length != 0;
+    var has_picker = document.getElementsByClassName('sketch-picker').length != 0;
 
     if (has_picker && show && popup == null) {
       setShow(false);
@@ -214,7 +214,7 @@ var VarColor = function VarColor(_ref) {
     }
 
     return function () {
-      return window.removeEventListener("click", handleCloseClick);
+      return window.removeEventListener('click', handleCloseClick);
     };
   }, [show]);
   var toggle = useCallback(function () {
@@ -818,6 +818,146 @@ var VarImage = function VarImage(_ref) {
   }, "\u5220\u9664")));
 };
 
+var IconAdd = function IconAdd() {
+  return React.createElement("svg", {
+    width: "22",
+    height: "22",
+    viewBox: "0 0 22 22",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, React.createElement("rect", {
+    x: "0.5",
+    y: "0.5",
+    width: "21",
+    height: "21",
+    rx: "3.5",
+    stroke: "#515151"
+  }), React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M11.5455 10.4545V5H9.90909V10.4545H5V12.0909H9.90909V17H11.5455V12.0909H17V10.4545H11.5455Z",
+    fill: "#515151"
+  }));
+};
+
+/**
+ * Button component. Only provides a onClick property.
+ */
+
+var VarAdd = function VarAdd(_ref) {
+  var label = _ref.label,
+      didClick = _ref.didClick,
+      disabled = _ref.disabled,
+      className = _ref.className,
+      children = _ref.children;
+
+  var _useState = useState(false),
+      show = _useState[0],
+      setShow = _useState[1];
+
+  var handleCloseClick = useCallback(function (event) {
+    var _event$target;
+
+    var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.react-var-ui-add-popover');
+    var has_picker = document.getElementsByClassName('react-var-ui-add-popover').length != 0;
+
+    if (has_picker && show && popup == null) {
+      setShow(false);
+    }
+  }, [show, setShow]);
+  useEffect(function () {
+    if (show) {
+      window.addEventListener('click', handleCloseClick);
+    } else {
+      window.removeEventListener('click', handleCloseClick);
+    }
+
+    return function () {
+      return window.removeEventListener('click', handleCloseClick);
+    };
+  }, [show]);
+  var toggle = useCallback(function () {
+    setShow(function (show) {
+      return !show;
+    });
+  }, [setShow]);
+  return React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("div", {
+    className: "react-var-ui-add"
+  }, React.createElement("div", {
+    className: "react-var-ui-add-wrapper"
+  }, React.createElement("div", {
+    onClick: function onClick() {
+      toggle();
+      didClick == null ? void 0 : didClick();
+    }
+  }, React.createElement(IconAdd, null)), show ? React.createElement("div", {
+    className: "react-var-ui-add-popover"
+  }, children) : null)));
+};
+
+var IconDelete = function IconDelete() {
+  return React.createElement("svg", {
+    width: "20",
+    height: "20",
+    viewBox: "0 0 20 20",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, React.createElement("g", {
+    opacity: "0.4"
+  }, React.createElement("path", {
+    d: "M14.5851 6.48999V15.51H5.56006V6.48999H14.5851ZM15.5851 4.48999H4.56006C4.29484 4.48999 4.04049 4.59535 3.85295 4.78288C3.66542 4.97042 3.56006 5.22477 3.56006 5.48999V16.51C3.56006 16.6413 3.58592 16.7714 3.63618 16.8927C3.68643 17.014 3.76009 17.1242 3.85295 17.2171C3.94581 17.31 4.05605 17.3836 4.17737 17.4339C4.2987 17.4841 4.42874 17.51 4.56006 17.51H15.5851C15.7164 17.51 15.8464 17.4841 15.9677 17.4339C16.0891 17.3836 16.1993 17.31 16.2922 17.2171C16.385 17.1242 16.4587 17.014 16.5089 16.8927C16.5592 16.7714 16.5851 16.6413 16.5851 16.51V5.48999C16.5851 5.22477 16.4797 4.97042 16.2922 4.78288C16.1046 4.59535 15.8503 4.48999 15.5851 4.48999V4.48999Z",
+    fill: "#F5F8FF"
+  }), React.createElement("path", {
+    d: "M17.4899 4.50496H2.51494C2.24641 4.50496 1.98888 4.61163 1.799 4.80151C1.60912 4.99139 1.50244 5.24893 1.50244 5.51746C1.50244 5.78599 1.60912 6.04352 1.799 6.23341C1.98888 6.42329 2.24641 6.52996 2.51494 6.52996H17.4899C17.7585 6.52996 18.016 6.42329 18.2059 6.23341C18.3958 6.04352 18.5024 5.78599 18.5024 5.51746C18.5024 5.24893 18.3958 4.99139 18.2059 4.80151C18.016 4.61163 17.7585 4.50496 17.4899 4.50496V4.50496ZM12.5149 1.52496H7.58494C7.33518 1.54274 7.10144 1.65451 6.93079 1.83774C6.76013 2.02098 6.66525 2.26207 6.66525 2.51246C6.66525 2.76285 6.76013 3.00395 6.93079 3.18718C7.10144 3.37041 7.33518 3.48218 7.58494 3.49996H12.5099C12.6455 3.50961 12.7817 3.49124 12.9098 3.44599C13.038 3.40074 13.1555 3.32957 13.255 3.23693C13.3544 3.14429 13.4338 3.03215 13.488 2.90751C13.5423 2.78287 13.5703 2.64839 13.5703 2.51246C13.5703 2.37653 13.5423 2.24205 13.488 2.11741C13.4338 1.99277 13.3544 1.88064 13.255 1.78799C13.1555 1.69535 13.038 1.62419 12.9098 1.57893C12.7817 1.53368 12.6455 1.51531 12.5099 1.52496H12.5149Z",
+    fill: "#F5F8FF"
+  }), React.createElement("path", {
+    d: "M8.56006 13.5C8.29525 13.4987 8.04166 13.3929 7.8544 13.2057C7.66715 13.0184 7.56137 12.7648 7.56006 12.5V9.5C7.56137 9.23519 7.66715 8.9816 7.8544 8.79435C8.04166 8.60709 8.29525 8.50131 8.56006 8.5C8.82487 8.50131 9.07846 8.60709 9.26571 8.79435C9.45297 8.9816 9.55874 9.23519 9.56006 9.5V12.5C9.55874 12.7648 9.45297 13.0184 9.26571 13.2057C9.07846 13.3929 8.82487 13.4987 8.56006 13.5V13.5ZM11.5601 13.5C11.2952 13.4987 11.0417 13.3929 10.8544 13.2057C10.6672 13.0184 10.5614 12.7648 10.5601 12.5V9.5C10.5614 9.23519 10.6672 8.9816 10.8544 8.79435C11.0417 8.60709 11.2952 8.50131 11.5601 8.5C11.8249 8.50131 12.0785 8.60709 12.2657 8.79435C12.453 8.9816 12.5587 9.23519 12.5601 9.5V12.5C12.5587 12.7648 12.453 13.0184 12.2657 13.2057C12.0785 13.3929 11.8249 13.4987 11.5601 13.5V13.5Z",
+    fill: "#F5F8FF"
+  })));
+};
+
+/**
+ * Category component for grouping inputs.
+ */
+
+var VarGroup = function VarGroup(_ref) {
+  var label = _ref.label,
+      disabled = _ref.disabled,
+      className = _ref.className,
+      children = _ref.children,
+      onDelete = _ref.onDelete;
+  return React.createElement("div", null, React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("div", {
+    className: "react-var-ui-group-wrapper"
+  }, React.createElement("div", {
+    className: "react-var-ui-group-wrapper-icon"
+  }, React.createElement("div", {
+    onClick: function onClick() {
+      onDelete == null ? void 0 : onDelete();
+    }
+  }, React.createElement(IconDelete, null))))), !!children && React.createElement("div", {
+    className: "react-var-ui-group"
+  }, children));
+};
+
+/**
+ * Group item component inside group.
+ */
+
+var VarGroupItem = function VarGroupItem(_ref) {
+  var children = _ref.children;
+  return React.createElement("div", {
+    className: "react-var-ui-group-item"
+  }, children);
+};
+
 /**
  * Category component for grouping inputs.
  */
@@ -825,13 +965,14 @@ var VarImage = function VarImage(_ref) {
 var VarCategory = function VarCategory(_ref) {
   var label = _ref.label,
       className = _ref.className,
+      showDash = _ref.showDash,
       children = _ref.children;
   return React.createElement("div", {
     className: 'react-var-ui-category ' + (className ? className : '')
   }, React.createElement("div", {
-    className: "react-var-ui-category-title"
+    className: 'react-var-ui-category-title ' + (showDash ? 'react-var-ui-category-title-dash' : '')
   }, label), !!children && React.createElement("div", null, children));
 };
 
-export { VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarXY, useVarUIValue };
+export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarXY, useVarUIValue };
 //# sourceMappingURL=react-var-ui.esm.js.map

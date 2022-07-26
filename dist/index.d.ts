@@ -12,5 +12,8 @@ export * from './VarString';
 export * from './VarToggle';
 export * from './VarXY';
 export * from './VarImage';
+export * from './VarAdd';
+export * from './VarGroup';
+export * from './VarGroupItem';
 export * from './VarCategory';
 export { useVarUIValue } from './common/VarUIContext';
