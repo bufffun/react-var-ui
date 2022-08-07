@@ -2,14 +2,22 @@ $foreground-color: var(--react-var-ui-foreground-color, #ddd);
 $background-color: var(--react-var-ui-background-color, #11111a);
 $accent-color: var(--react-var-ui-accent-color, #77f);
 $input-background-color: var(--react-var-ui-input-background-color, #353542);
-$input-background-hover-color: var(--react-var-ui-input-background-hover-color,
-    #424253);
-$input-background-pressed-color: var(--react-var-ui-input-background-pressed-color,
-    #2b2b37);
-$label-background-normal-color: var(--react-var-ui-label-background-normal-color,
-    #22222a);
-$label-background-hover-color: var(--react-var-ui-label-background-hover-color,
-    #2a2a33);
+$input-background-hover-color: var(
+  --react-var-ui-input-background-hover-color,
+  #424253
+);
+$input-background-pressed-color: var(
+  --react-var-ui-input-background-pressed-color,
+  #2b2b37
+);
+$label-background-normal-color: var(
+  --react-var-ui-label-background-normal-color,
+  #22222a
+);
+$label-background-hover-color: var(
+  --react-var-ui-label-background-hover-color,
+  #2a2a33
+);
 $label-border-color: var(--react-var-ui-label-border-color, #33333a);
 $transition-time: 0.2s;
 
@@ -35,7 +43,7 @@ $transition-time: 0.2s;
   }
 
   &-group {
-    padding-left: 0.56rem;
+    padding-left: 0.8rem;
     position: relative;
 
     &-wrapper {
@@ -50,33 +58,61 @@ $transition-time: 0.2s;
       }
     }
 
-
-
     & &-item:first-child:before {
       position: absolute;
-      top: 0;
-      bottom: -4px;
-      margin-left: -1px;
+      top: -12px;
+      bottom: -40px;
+      margin-left: -8px;
+      border-left: 1px solid #515668;
       content: ' ';
-      border-left: 1px solid #ff0000 !important;
+    }
+
+    & &-item:first-child:after {
+      position: absolute;
+      width: 6px;
+      height: 50%;
+      top: 0;
+      margin-left: -8px;
+      border-bottom: 1px solid #515668;
+      content: ' ';
     }
 
     & &-item:not(:first-child):not(:last-child):before {
       position: absolute;
       top: 0;
-      bottom: -4px;
-      margin-left: -1px;
+      bottom: 0;
+      margin-left: -8px;
       content: ' ';
-      border-left: 1px solid #00ff00 !important;
+      border-left: 1px solid #515668 !important;
+    }
+
+    & &-item:not(:first-child):not(:last-child):after {
+      position: absolute;
+      width: 6px;
+      height: 50%;
+      top: 0;
+      margin-left: -8px;
+      border-bottom: 1px solid #515668;
+      content: ' ';
     }
 
     & &-item:last-child:before {
       position: absolute;
       top: 0;
-      bottom: -4px;
-      margin-left: -1px;
+      height: 50%;
+      margin-left: -8px;
       content: ' ';
-      border-left: 1px solid #0000ff !important;
+      border-left: 1px solid #515668 !important;
+    }
+
+    & &-item:last-child:after {
+      position: absolute;
+      width: 6px;
+      height: 50%;
+      top: 0;
+      margin-left: -8px;
+      border-bottom: 1px solid #515668;
+      content: ' ';
     }
 
     &-item {
@@ -127,6 +163,7 @@ $transition-time: 0.2s;
       color: $foreground-color;
       text-transform: uppercase;
       font-size: 1.125rem;
+      font-weight: 600;
       padding: 1.25rem;
       user-select: none;
       position: relative;
@@ -175,7 +212,9 @@ $transition-time: 0.2s;
       border-radius: 0.2rem;
       display: inline-block;
       cursor: pointer;
-      background: white url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAxSURBVDhPY2RgYBABYnzgDT5JxlEDGIZJGBBIBvjTCSgMCAG8CW3UAAZwQiIEaBuIACBfCLFwf0bOAAAAAElFTkSuQmCC') center center;
+      background: white
+        url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARzQklUCAgICHwIZIgAAAAxSURBVDhPY2RgYBABYnzgDT5JxlEDGIZJGBBIBvjTCSgMCAG8CW3UAAZwQiIEaBuIACBfCLFwf0bOAAAAAElFTkSuQmCC')
+        center center;
     }
 
     &-popover {
@@ -203,7 +242,7 @@ $transition-time: 0.2s;
       left: 0;
       right: 0;
       bottom: 0;
-      background: $accent-color  !important;
+      background: $accent-color !important;
       border-radius: 0.2rem;
       transition: $transition-time ease-in-out all;
       cursor: pointer;
@@ -226,7 +265,7 @@ $transition-time: 0.2s;
       height: 0;
       opacity: 0.01;
 
-      &:checked+.react-var-ui-toggle-helper {
+      &:checked + .react-var-ui-toggle-helper {
         background: #0dbe54 !important;
 
         &:before {
@@ -253,7 +292,6 @@ $transition-time: 0.2s;
   }
 
   &-string {
-
     &-multiline,
     input {
       width: 100%;
@@ -302,7 +340,7 @@ $transition-time: 0.2s;
       background: $label-background-hover-color;
     }
 
-    &>span {
+    & > span {
       display: flex;
       align-items: center;
 
@@ -312,7 +350,7 @@ $transition-time: 0.2s;
     }
 
     &-has-label {
-      &>span {
+      & > span {
         &:first-child {
           margin-right: 0.2rem;
         }

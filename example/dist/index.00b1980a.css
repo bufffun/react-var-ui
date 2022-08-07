@@ -17,7 +17,7 @@
   right: 0;
 }
 .react-var-ui-group {
-  padding-left: 0.56rem;
+  padding-left: 0.8rem;
   position: relative;
 }
 .react-var-ui-group-wrapper {
@@ -32,27 +32,54 @@
 }
 .react-var-ui-group .react-var-ui-group-item:first-child:before {
   position: absolute;
-  top: 0;
-  bottom: -4px;
-  margin-left: -1px;
+  top: -12px;
+  bottom: -40px;
+  margin-left: -8px;
+  border-left: 1px solid #515668;
   content: " ";
-  border-left: 1px solid #ff0000 !important;
+}
+.react-var-ui-group .react-var-ui-group-item:first-child:after {
+  position: absolute;
+  width: 6px;
+  height: 50%;
+  top: 0;
+  margin-left: -8px;
+  border-bottom: 1px solid #515668;
+  content: " ";
 }
 .react-var-ui-group .react-var-ui-group-item:not(:first-child):not(:last-child):before {
   position: absolute;
   top: 0;
-  bottom: -4px;
-  margin-left: -1px;
+  bottom: 0;
+  margin-left: -8px;
   content: " ";
-  border-left: 1px solid #00ff00 !important;
+  border-left: 1px solid #515668 !important;
+}
+.react-var-ui-group .react-var-ui-group-item:not(:first-child):not(:last-child):after {
+  position: absolute;
+  width: 6px;
+  height: 50%;
+  top: 0;
+  margin-left: -8px;
+  border-bottom: 1px solid #515668;
+  content: " ";
 }
 .react-var-ui-group .react-var-ui-group-item:last-child:before {
   position: absolute;
   top: 0;
-  bottom: -4px;
-  margin-left: -1px;
+  height: 50%;
+  margin-left: -8px;
   content: " ";
-  border-left: 1px solid #0000ff !important;
+  border-left: 1px solid #515668 !important;
+}
+.react-var-ui-group .react-var-ui-group-item:last-child:after {
+  position: absolute;
+  width: 6px;
+  height: 50%;
+  top: 0;
+  margin-left: -8px;
+  border-bottom: 1px solid #515668;
+  content: " ";
 }
 .react-var-ui-group-item {
   display: block;
@@ -96,6 +123,7 @@
   color: var(--react-var-ui-foreground-color, #ddd);
   text-transform: uppercase;
   font-size: 1.125rem;
+  font-weight: 600;
   padding: 1.25rem;
   user-select: none;
   position: relative;
