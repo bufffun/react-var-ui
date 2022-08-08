@@ -96,12 +96,16 @@
 }
 .react-var-ui-image-wrapper {
   position: relative;
-  height: 36px;
-  width: 36px;
+  height: 34px;
+  width: 34px;
+  box-sizing: border-box;
+  border: 1px solid #515151;
+  border-radius: 6px;
+  overflow: hidden;
 }
 .react-var-ui-image-wrapper-preview {
-  height: 36px;
-  width: 36px;
+  height: 34px;
+  width: 34px;
 }
 .react-var-ui-image-wrapper input {
   position: absolute;
@@ -154,6 +158,7 @@
   width: 2.5rem;
   height: 1.2rem;
   border-radius: 0.2rem;
+  border: 1px solid #515668;
 }
 .react-var-ui-color-value {
   width: 3.75rem;

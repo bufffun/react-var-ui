@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useRef } from 'react';
 import { IconImageSelect } from './icons/IconImageSelect';
+import { IconDelete } from './icons/IconDelete';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -31,15 +32,12 @@ export const VarImage: FC<IVarImageProps> = ({
 }) => {
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const deleteAction = useCallback(
-    () =>  {
-      setCurrentValue({ src: null });
-      if (inputRef && inputRef.current) {
-        inputRef.current.value = "";
-      }
-    },
-    [setCurrentValue, inputRef]
-  );
+  const deleteAction = useCallback(() => {
+    setCurrentValue({ src: null });
+    if (inputRef && inputRef.current) {
+      inputRef.current.value = '';
+    }
+  }, [setCurrentValue, inputRef]);
 
   const onFileChange = useCallback(
     event => {
@@ -56,7 +54,14 @@ export const VarImage: FC<IVarImageProps> = ({
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <div className="react-var-ui-image">
-        <div className="react-var-ui-image-wrapper">
+        <div
+          className="react-var-ui-image-wrapper"
+          style={
+            currentValue == null || currentValue.src == null
+              ? { border: 'none' }
+              : {}
+          }
+        >
           {currentValue == null || currentValue.src == null ? (
             <IconImageSelect></IconImageSelect>
           ) : (
@@ -70,12 +75,12 @@ export const VarImage: FC<IVarImageProps> = ({
               alt="preview"
             />
           )}
-          <input ref={inputRef} type="file" id='' onChange={onFileChange} />
+          <input ref={inputRef} type="file" id="" onChange={onFileChange} />
         </div>
         {currentValue == null || currentValue.src == null ? null : (
-          <span className="react-var-ui-image-delete" onClick={deleteAction}>
-            删除
-          </span>
+          <div className="react-var-ui-image-delete" onClick={deleteAction}>
+            <IconDelete></IconDelete>
+          </div>
         )}
       </div>
     </VarBase>

@@ -133,12 +133,16 @@ $transition-time: 0.2s;
 
     &-wrapper {
       position: relative;
-      height: 36px;
-      width: 36px;
+      height: 34px;
+      width: 34px;
+      box-sizing: border-box;
+      border: 1px solid #515151;
+      border-radius: 6px;
+      overflow: hidden;
 
       &-preview {
-        height: 36px;
-        width: 36px;
+        height: 32px;
+        width: 32px;
       }
 
       input {
@@ -202,6 +206,7 @@ $transition-time: 0.2s;
       width: 2.5rem;
       height: 1.2rem;
       border-radius: 0.2rem;
+      border: 1px solid #515668;
     }
 
     &-value {
