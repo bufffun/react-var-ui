@@ -1,18 +1,19 @@
 import { FC } from 'react';
 import { IVarBaseInputProps } from './VarBase';
-export interface IVarVectorProps extends IVarBaseInputProps<number> {
+export declare type IVarVectorValue = [number, number, number];
+export interface IVarVectorProps extends IVarBaseInputProps<IVarVectorValue> {
     /**
      * Minimum value.
      */
-    min?: number;
+    min?: IVarVectorValue;
     /**
      * Maximum value.
      */
-    max?: number;
+    max?: IVarVectorValue;
     /**
      * Step.
      */
-    step?: number;
+    step?: IVarVectorValue;
     /**
      * Should the end result be rounded to an integer value.
      */

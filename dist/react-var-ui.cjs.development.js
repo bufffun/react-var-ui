@@ -858,7 +858,7 @@ var VarVector = function VarVector(_ref) {
       min = _ref.min,
       max = _ref.max,
       _ref$step = _ref.step,
-      step = _ref$step === void 0 ? 1 : _ref$step,
+      step = _ref$step === void 0 ? [1, 1, 1] : _ref$step,
       integer = _ref.integer,
       disabled = _ref.disabled,
       className = _ref.className;
@@ -867,8 +867,14 @@ var VarVector = function VarVector(_ref) {
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
-  var rounded = React.useMemo(function () {
-    return roundValue(currentValue, min, max, step, !!integer);
+  var roundedX = React.useMemo(function () {
+    return roundValue(currentValue[0], min ? min[0] : min, max ? max[0] : max, step[0], !!integer);
+  }, [currentValue, min, max, step, integer]);
+  var roundedY = React.useMemo(function () {
+    return roundValue(currentValue[1], min ? min[1] : min, max ? max[1] : max, step[1], !!integer);
+  }, [currentValue, min, max, step, integer]);
+  var roundedZ = React.useMemo(function () {
+    return roundValue(currentValue[2], min ? min[2] : min, max ? max[2] : max, step[2], !!integer);
   }, [currentValue, min, max, step, integer]);
   return React__default.createElement(VarBase, {
     label: label,
@@ -879,32 +885,32 @@ var VarVector = function VarVector(_ref) {
   }, React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
-    min: min,
-    max: max,
-    step: step,
-    value: rounded.toString(),
+    min: min ? min[0] : min,
+    max: max ? max[0] : max,
+    step: step[0],
+    value: roundedX.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+      return setCurrentValue([roundValue(parseFloat(e.target.value), min ? min[0] : min, max ? max[0] : max, step[0], !!integer), currentValue[1], currentValue[2]]);
     }
   }), React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
-    min: min,
-    max: max,
-    step: step,
-    value: rounded.toString(),
+    min: min ? min[1] : min,
+    max: max ? max[1] : max,
+    step: step[1],
+    value: roundedY.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+      return setCurrentValue([currentValue[0], roundValue(parseFloat(e.target.value), min ? min[1] : min, max ? max[1] : max, step[1], !!integer), currentValue[2]]);
     }
   }), React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
-    min: min,
-    max: max,
-    step: step,
-    value: rounded.toString(),
+    min: min ? min[2] : min,
+    max: max ? max[2] : max,
+    step: step[2],
+    value: roundedZ.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+      return setCurrentValue([currentValue[0], currentValue[1], roundValue(parseFloat(e.target.value), min ? min[2] : min, max ? max[2] : max, step[2], !!integer)]);
     }
   })));
 };
