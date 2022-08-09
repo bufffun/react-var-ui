@@ -434,6 +434,35 @@ $transition-time: 0.2s;
     }
   }
 
+  &-vector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 -5px;
+
+    input {
+      margin: 0 5px;
+      flex: 1 1 0;
+      width: 2.5rem;
+      background: #383c4a;
+      border: none;
+      -moz-appearance: textfield;
+      color: $foreground-color;
+      outline: none !important;
+      height: 1.3rem;
+      padding: 0 0.2rem;
+      text-align: right;
+      border-radius: 0.25rem;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
   &-number {
     input {
       background: $input-background-color;

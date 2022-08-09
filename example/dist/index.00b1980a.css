@@ -104,8 +104,8 @@
   overflow: hidden;
 }
 .react-var-ui-image-wrapper-preview {
-  height: 34px;
-  width: 34px;
+  height: 32px;
+  width: 32px;
 }
 .react-var-ui-image-wrapper input {
   position: absolute;
@@ -341,6 +341,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.react-var-ui-vector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 -5px;
+}
+.react-var-ui-vector input {
+  margin: 0 5px;
+  flex: 1 1 0;
+  width: 2.5rem;
+  background: #383c4a;
+  border: none;
+  -moz-appearance: textfield;
+  color: var(--react-var-ui-foreground-color, #ddd);
+  outline: none !important;
+  height: 1.3rem;
+  padding: 0 0.2rem;
+  text-align: right;
+  border-radius: 0.25rem;
+}
+.react-var-ui-vector input::-webkit-outer-spin-button, .react-var-ui-vector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 .react-var-ui-number input {
   background: var(--react-var-ui-input-background-color, #353542);

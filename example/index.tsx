@@ -21,6 +21,7 @@ import {
   VarAdd,
   VarGroup,
   VarGroupItem,
+  VarVector,
 } from '../.';
 
 const App = () => {
@@ -131,6 +132,13 @@ const App = () => {
               max={0.8}
               step={0.1}
               showButtons
+            />
+            <VarVector
+              label="VarVector"
+              path="number"
+              min={0.2}
+              max={0.8}
+              step={0.1}
             />
             <VarNumber label="VarNumber (no buttons)" path="number" />
             <VarString label="VarString" path="string" />

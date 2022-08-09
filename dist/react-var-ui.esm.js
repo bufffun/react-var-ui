@@ -839,6 +839,69 @@ var VarImage = function VarImage(_ref) {
   }, React.createElement(IconDelete, null))));
 };
 
+/**
+ * Integer/float number component. Accepts and provides numbers.
+ */
+
+var VarVector = function VarVector(_ref) {
+  var label = _ref.label,
+      path = _ref.path,
+      value = _ref.value,
+      onChange = _ref.onChange,
+      min = _ref.min,
+      max = _ref.max,
+      _ref$step = _ref.step,
+      step = _ref$step === void 0 ? 1 : _ref$step,
+      integer = _ref.integer,
+      disabled = _ref.disabled,
+      className = _ref.className;
+
+  var _useVarUIValue = useVarUIValue(path, value, onChange),
+      currentValue = _useVarUIValue[0],
+      setCurrentValue = _useVarUIValue[1];
+
+  var rounded = useMemo(function () {
+    return roundValue(currentValue, min, max, step, !!integer);
+  }, [currentValue, min, max, step, integer]);
+  return React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("div", {
+    className: "react-var-ui-vector"
+  }, React.createElement("input", {
+    className: "react-var-ui-vector-input",
+    type: "number",
+    min: min,
+    max: max,
+    step: step,
+    value: rounded.toString(),
+    onChange: function onChange(e) {
+      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    }
+  }), React.createElement("input", {
+    className: "react-var-ui-vector-input",
+    type: "number",
+    min: min,
+    max: max,
+    step: step,
+    value: rounded.toString(),
+    onChange: function onChange(e) {
+      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    }
+  }), React.createElement("input", {
+    className: "react-var-ui-vector-input",
+    type: "number",
+    min: min,
+    max: max,
+    step: step,
+    value: rounded.toString(),
+    onChange: function onChange(e) {
+      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    }
+  })));
+};
+
 var IconAdd = function IconAdd() {
   return React.createElement("svg", {
     width: "22",
@@ -974,5 +1037,5 @@ var VarCategory = function VarCategory(_ref) {
   }, label), !!children && React.createElement("div", null, children));
 };
 
-export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarXY, useVarUIValue };
+export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarVector, VarXY, useVarUIValue };
 //# sourceMappingURL=react-var-ui.esm.js.map

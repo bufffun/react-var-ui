@@ -15,6 +15,7 @@ export * from './VarString';
 export * from './VarToggle';
 export * from './VarXY';
 export * from './VarImage';
+export * from './VarVector';
 
 // Other
 export * from './VarAdd';
