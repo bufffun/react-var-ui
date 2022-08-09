@@ -38,6 +38,7 @@ const App = () => {
     string: 'test',
     angle: 0,
     xy: [0, 0],
+    vector: [2, 3, 4],
     image: { src: image },
   });
 
@@ -135,10 +136,10 @@ const App = () => {
             />
             <VarVector
               label="VarVector"
-              path="number"
-              min={0.2}
-              max={0.8}
-              step={0.1}
+              path="vector"
+              min={[1, 2, 3]}
+              max={[200, 20, 100]}
+              step={[1, 1, 1]}
             />
             <VarNumber label="VarNumber (no buttons)" path="number" />
             <VarString label="VarString" path="string" />
