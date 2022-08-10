@@ -346,24 +346,40 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   margin: 0 -5px;
 }
-.react-var-ui-vector input {
+.react-var-ui-vector-wrapper {
+  height: 1.3rem;
   margin: 0 5px;
   flex: 1 1 0;
-  width: 2.5rem;
   background: #383c4a;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.react-var-ui-vector-wrapper span {
+  margin-left: 0.5rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  color: #f28f1b;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+.react-var-ui-vector-wrapper input {
+  flex: 1;
+  background: #383c4a;
+  width: 100%;
   border: none;
   -moz-appearance: textfield;
   color: var(--react-var-ui-foreground-color, #ddd);
   outline: none !important;
   height: 1.3rem;
   padding: 0 0.2rem;
-  text-align: right;
-  border-radius: 0.25rem;
+  text-align: center;
 }
-.react-var-ui-vector input::-webkit-outer-spin-button, .react-var-ui-vector input::-webkit-inner-spin-button {
+.react-var-ui-vector-wrapper input::-webkit-outer-spin-button, .react-var-ui-vector-wrapper input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

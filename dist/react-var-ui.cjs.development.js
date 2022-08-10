@@ -919,11 +919,68 @@ var VarVector = function VarVector(_ref) {
       integer = _ref.integer,
       disabled = _ref.disabled,
       className = _ref.className;
+  var inputRefX = React.useRef(null);
+  var inputRefY = React.useRef(null);
+  var inputRefZ = React.useRef(null);
+
+  var _useState = React.useState([0, 0, 0]),
+      display = _useState[0],
+      setDisplay = _useState[1];
 
   var _useVarUIValue = useVarUIValue(path, value, onChange),
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
+  var stateRef = React__default.useRef(currentValue);
+  var handleInputChange = React.useCallback(function (e, index) {
+    var newValue = [].concat(currentValue);
+    newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    stateRef.current = newValue;
+    setCurrentValue(newValue);
+  }, [setCurrentValue, currentValue, stateRef]);
+  var handleInputBlur = React.useCallback(function (e, index) {
+    var newValue = JSON.parse(JSON.stringify(stateRef.current));
+    newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    stateRef.current = newValue;
+    setCurrentValue(newValue);
+    setDisplay(newValue);
+  }, [setCurrentValue, setDisplay, currentValue]);
+  var handleInputBlurX = React.useCallback(function (e) {
+    handleInputBlur(e, 0);
+  }, [handleInputBlur]);
+  var handleInputBlurY = React.useCallback(function (e) {
+    handleInputBlur(e, 1);
+  }, [handleInputBlur]);
+  var handleInputBlurZ = React.useCallback(function (e) {
+    handleInputBlur(e, 2);
+  }, [handleInputBlur]);
+  React.useEffect(function () {
+    var _inputRefX$current, _inputRefY$current, _inputRefZ$current;
+
+    (_inputRefX$current = inputRefX.current) == null ? void 0 : _inputRefX$current.addEventListener('blur', handleInputBlurX);
+    (_inputRefY$current = inputRefY.current) == null ? void 0 : _inputRefY$current.addEventListener('blur', handleInputBlurY);
+    (_inputRefZ$current = inputRefZ.current) == null ? void 0 : _inputRefZ$current.addEventListener('blur', handleInputBlurZ);
+    return function () {
+      var _inputRefX$current2, _inputRefY$current2, _inputRefZ$current2;
+
+      (_inputRefX$current2 = inputRefX.current) == null ? void 0 : _inputRefX$current2.removeEventListener('blur', handleInputBlurX);
+      (_inputRefY$current2 = inputRefY.current) == null ? void 0 : _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
+      (_inputRefZ$current2 = inputRefZ.current) == null ? void 0 : _inputRefZ$current2.removeEventListener('blur', handleInputBlurZ);
+    };
+  }, []);
+  React.useEffect(function () {
+    if (inputRefX.current) {
+      inputRefX.current.value = roundedX.toString();
+    }
+
+    if (inputRefY.current) {
+      inputRefY.current.value = roundedY.toString();
+    }
+
+    if (inputRefZ.current) {
+      inputRefZ.current.value = roundedZ.toString();
+    }
+  }, [display]);
   var roundedX = React.useMemo(function () {
     return roundValue(currentValue[0], min ? min[0] : min, max ? max[0] : max, step[0], !!integer);
   }, [currentValue, min, max, step, integer]);
@@ -939,37 +996,43 @@ var VarVector = function VarVector(_ref) {
     className: className
   }, React__default.createElement("div", {
     className: "react-var-ui-vector"
-  }, React__default.createElement("input", {
+  }, React__default.createElement("div", {
+    className: "react-var-ui-vector-wrapper"
+  }, React__default.createElement("span", null, "X"), React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
+    ref: inputRefX,
     min: min ? min[0] : min,
     max: max ? max[0] : max,
     step: step[0],
-    value: roundedX.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue([roundValue(parseFloat(e.target.value), min ? min[0] : min, max ? max[0] : max, step[0], !!integer), currentValue[1], currentValue[2]]);
+      return handleInputChange(e, 0);
     }
-  }), React__default.createElement("input", {
+  })), React__default.createElement("div", {
+    className: "react-var-ui-vector-wrapper"
+  }, React__default.createElement("span", null, "Y"), React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
+    ref: inputRefY,
     min: min ? min[1] : min,
     max: max ? max[1] : max,
     step: step[1],
-    value: roundedY.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue([currentValue[0], roundValue(parseFloat(e.target.value), min ? min[1] : min, max ? max[1] : max, step[1], !!integer), currentValue[2]]);
+      return handleInputChange(e, 1);
     }
-  }), React__default.createElement("input", {
+  })), React__default.createElement("div", {
+    className: "react-var-ui-vector-wrapper"
+  }, React__default.createElement("span", null, "Z"), React__default.createElement("input", {
     className: "react-var-ui-vector-input",
     type: "number",
+    ref: inputRefZ,
     min: min ? min[2] : min,
     max: max ? max[2] : max,
     step: step[2],
-    value: roundedZ.toString(),
     onChange: function onChange(e) {
-      return setCurrentValue([currentValue[0], currentValue[1], roundValue(parseFloat(e.target.value), min ? min[2] : min, max ? max[2] : max, step[2], !!integer)]);
+      return handleInputChange(e, 2);
     }
-  })));
+  }))));
 };
 
 var IconAdd = function IconAdd() {
