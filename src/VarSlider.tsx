@@ -1,4 +1,11 @@
-import React, { FC, useCallback, useMemo, useRef } from 'react';
+import React, {
+  FC,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+} from 'react';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 
 import { useVarUIValue } from './common/VarUIContext';
@@ -58,7 +65,46 @@ export const VarSlider: FC<IVarSliderProps> = ({
   className,
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    inputRef.current?.addEventListener('blur', handleInputBlur);
+    return () => inputRef.current?.removeEventListener('blur', handleInputBlur);
+  }, []);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      const value = roundValue(
+        currentValue,
+        min,
+        max,
+        step,
+        !!integer
+      ).toString();
+      inputRef.current.value = value;
+    }
+  }, [display]);
+
+  const handleInputChange = useCallback(
+    e => {
+      setCurrentValue(
+        roundValue(parseFloat(e.target.value), min, max, step, !!integer)
+      );
+    },
+    [setCurrentValue]
+  );
+
+  const handleInputBlur = useCallback(
+    e => {
+      const newValue = parseFloat(e.target.value);
+      setCurrentValue(roundValue(newValue, min, max, step, !!integer));
+      setDisplay(newValue);
+    },
+    [setCurrentValue, setDisplay]
+  );
+
   const rounded = useMemo(
     () => roundValue(currentValue, min, max, step, !!integer),
     [currentValue, min, max, step, integer]
@@ -86,25 +132,20 @@ export const VarSlider: FC<IVarSliderProps> = ({
         !!integer
       );
       setCurrentValue(value);
+      setDisplay(value);
     },
-    [setCurrentValue, integer, min, max, step]
+    [setCurrentValue, setDisplay, integer, min, max, step]
   );
 
-  const increaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue + step, min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
-  );
+  const increaseValue = useCallback(() => {
+    const newValue = currentValue + (step ?? 1);
+    setCurrentValue(roundValue(newValue, min, max, step, !!integer));
+  }, [currentValue, setCurrentValue, integer, min, max, step]);
 
-  const decreaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue - step, min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
-  );
+  const decreaseValue = useCallback(() => {
+    const newValue = currentValue - (step ?? 1);
+    setCurrentValue(roundValue(newValue, min, max, step, !!integer));
+  }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   const { events } = usePointerDragSimple(updatePosition);
 
@@ -134,21 +175,11 @@ export const VarSlider: FC<IVarSliderProps> = ({
           <input
             className="react-var-ui-slider-input"
             type="number"
+            ref={inputRef}
             min={min}
             max={max}
             step={step}
-            value={rounded}
-            onChange={e =>
-              setCurrentValue(
-                roundValue(
-                  parseFloat(e.target.value),
-                  min,
-                  max,
-                  step,
-                  !!integer
-                )
-              )
-            }
+            onChange={handleInputChange}
           />
         ) : (
           <span>{rounded.toString()}</span>

@@ -367,19 +367,47 @@ var VarNumber = function VarNumber(_ref) {
       showButtons = _ref.showButtons,
       disabled = _ref.disabled,
       className = _ref.className;
+  var inputRef = React.useRef(null);
 
   var _useVarUIValue = useVarUIValue(path, value, onChange),
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
-  var rounded = React.useMemo(function () {
-    return roundValue(currentValue, min, max, step, !!integer);
-  }, [currentValue, min, max, step, integer]);
+  var _useState = React.useState(0),
+      display = _useState[0],
+      setDisplay = _useState[1];
+
+  React.useEffect(function () {
+    var _inputRef$current;
+
+    (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.addEventListener('blur', handleInputBlur);
+    return function () {
+      var _inputRef$current2;
+
+      return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
+    };
+  }, []);
+  React.useEffect(function () {
+    if (inputRef.current) {
+      var _value = roundValue(currentValue, min, max, step, !!integer).toString();
+
+      inputRef.current.value = _value;
+    }
+  }, [display]);
+  var handleInputChange = React.useCallback(function (e) {
+    setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+  }, [setCurrentValue]);
+  var handleInputBlur = React.useCallback(function (e) {
+    setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    setDisplay(parseFloat(e.target.value));
+  }, [setCurrentValue, setDisplay]);
   var increaseValue = React.useCallback(function () {
-    return setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
+    setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
+    setDisplay(currentValue + (step != null ? step : 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
   var decreaseValue = React.useCallback(function () {
-    return setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
+    setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
+    setDisplay(currentValue - (step != null ? step : 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
   return React__default.createElement(VarBase, {
     label: label,
@@ -389,14 +417,12 @@ var VarNumber = function VarNumber(_ref) {
     className: "react-var-ui-number"
   }, React__default.createElement("input", {
     className: "react-var-ui-number-input",
+    ref: inputRef,
     type: "number",
     min: min,
     max: max,
     step: step,
-    value: rounded.toString(),
-    onChange: function onChange(e) {
-      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
-    }
+    onChange: handleInputChange
   }), showButtons && React__default.createElement(React__default.Fragment, null, React__default.createElement("button", {
     title: "Increase",
     onClick: increaseValue
@@ -468,11 +494,41 @@ var VarSlider = function VarSlider(_ref) {
       disabled = _ref.disabled,
       className = _ref.className;
   var sliderRef = React.useRef(null);
+  var inputRef = React.useRef(null);
 
   var _useVarUIValue = useVarUIValue(path, value, onChange),
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
+  var _useState = React.useState(0),
+      display = _useState[0],
+      setDisplay = _useState[1];
+
+  React.useEffect(function () {
+    var _inputRef$current;
+
+    (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.addEventListener('blur', handleInputBlur);
+    return function () {
+      var _inputRef$current2;
+
+      return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
+    };
+  }, []);
+  React.useEffect(function () {
+    if (inputRef.current) {
+      var _value = roundValue(currentValue, min, max, step, !!integer).toString();
+
+      inputRef.current.value = _value;
+    }
+  }, [display]);
+  var handleInputChange = React.useCallback(function (e) {
+    setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+  }, [setCurrentValue]);
+  var handleInputBlur = React.useCallback(function (e) {
+    var newValue = parseFloat(e.target.value);
+    setCurrentValue(roundValue(newValue, min, max, step, !!integer));
+    setDisplay(newValue);
+  }, [setCurrentValue, setDisplay]);
   var rounded = React.useMemo(function () {
     return roundValue(currentValue, min, max, step, !!integer);
   }, [currentValue, min, max, step, integer]);
@@ -489,12 +545,15 @@ var VarSlider = function VarSlider(_ref) {
     var percent = (x - rect.left) / rect.width;
     var value = roundValue(min + (max - min) * percent, min, max, step, !!integer);
     setCurrentValue(value);
-  }, [setCurrentValue, integer, min, max, step]);
+    setDisplay(value);
+  }, [setCurrentValue, setDisplay, integer, min, max, step]);
   var increaseValue = React.useCallback(function () {
-    return setCurrentValue(roundValue(currentValue + step, min, max, step, !!integer));
+    var newValue = currentValue + (step != null ? step : 1);
+    setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
   var decreaseValue = React.useCallback(function () {
-    return setCurrentValue(roundValue(currentValue - step, min, max, step, !!integer));
+    var newValue = currentValue - (step != null ? step : 1);
+    setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   var _usePointerDragSimple = reactUsePointerDrag.usePointerDragSimple(updatePosition),
@@ -527,13 +586,11 @@ var VarSlider = function VarSlider(_ref) {
   })), showInput ? React__default.createElement("input", {
     className: "react-var-ui-slider-input",
     type: "number",
+    ref: inputRef,
     min: min,
     max: max,
     step: step,
-    value: rounded,
-    onChange: function onChange(e) {
-      return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
-    }
+    onChange: handleInputChange
   }) : React__default.createElement("span", null, rounded.toString()), showButtons && React__default.createElement(React__default.Fragment, null, React__default.createElement("button", {
     title: "Increase",
     onClick: increaseValue

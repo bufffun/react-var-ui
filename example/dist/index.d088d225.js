@@ -735,12 +735,60 @@ const App = ()=>{
             lineNumber: 153
         },
         __self: undefined
+    }))), /*#__PURE__*/ _react.createElement("div", {
+        className: "values",
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 161
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement("strong", {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 162
+        },
+        __self: undefined
+    }, "Values:"), /*#__PURE__*/ _react.createElement("dl", {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 163
+        },
+        __self: undefined
+    }, Object.keys(values).map(function(key) {
+        if (key === "image") return(/*#__PURE__*/ _react.createElement(_react.Fragment, {
+            key: key,
+            __source: {
+                fileName: "/Users/renes/react-var-ui/example/index.tsx",
+                lineNumber: 166
+            },
+            __self: this
+        }));
+        return(/*#__PURE__*/ _react.createElement(_react.Fragment, {
+            key: key,
+            __source: {
+                fileName: "/Users/renes/react-var-ui/example/index.tsx",
+                lineNumber: 169
+            },
+            __self: this
+        }, /*#__PURE__*/ _react.createElement("dt", {
+            __source: {
+                fileName: "/Users/renes/react-var-ui/example/index.tsx",
+                lineNumber: 170
+            },
+            __self: this
+        }, key), /*#__PURE__*/ _react.createElement("dd", {
+            __source: {
+                fileName: "/Users/renes/react-var-ui/example/index.tsx",
+                lineNumber: 171
+            },
+            __self: this
+        }, typeof values[key] === 'boolean' ? values[key] ? 'true' : 'false' : Array.isArray(values[key]) ? values[key].join(', ') : values[key])));
     }))))));
 };
 _reactDom.render(/*#__PURE__*/ _react.createElement(App, {
     __source: {
         fileName: "/Users/renes/react-var-ui/example/index.tsx",
-        lineNumber: 185
+        lineNumber: 190
     },
     __self: undefined
 }), document.getElementById('root'));
@@ -25187,18 +25235,40 @@ _c8 = IconUp;
  */ var VarNumber = function VarNumber1(_ref) {
     _s5();
     var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, min = _ref.min, max = _ref.max, _ref$step = _ref.step, step = _ref$step === void 0 ? 1 : _ref$step, integer = _ref.integer, showButtons = _ref.showButtons, disabled = _ref.disabled, className = _ref.className;
+    var inputRef = React.useRef(null);
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
-    var rounded = React.useMemo(function() {
-        return roundValue(currentValue, min, max, step, !!integer);
+    var _useState = React.useState(0), display = _useState[0], setDisplay = _useState[1];
+    React.useEffect(function() {
+        var _inputRef$current;
+        (_inputRef$current = inputRef.current) == null || _inputRef$current.addEventListener('blur', handleInputBlur);
+        return function() {
+            var _inputRef$current2;
+            return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
+        };
+    }, []);
+    React.useEffect(function() {
+        if (inputRef.current) {
+            var _value = roundValue(currentValue, min, max, step, !!integer).toString();
+            inputRef.current.value = _value;
+        }
     }, [
-        currentValue,
-        min,
-        max,
-        step,
-        integer
+        display
+    ]);
+    var handleInputChange = React.useCallback(function(e) {
+        setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    }, [
+        setCurrentValue
+    ]);
+    var handleInputBlur = React.useCallback(function(e) {
+        setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+        setDisplay(parseFloat(e.target.value));
+    }, [
+        setCurrentValue,
+        setDisplay
     ]);
     var increaseValue = React.useCallback(function() {
-        return setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
+        setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
+        setDisplay(currentValue + (step != null ? step : 1));
     }, [
         currentValue,
         setCurrentValue,
@@ -25208,7 +25278,8 @@ _c8 = IconUp;
         step
     ]);
     var decreaseValue = React.useCallback(function() {
-        return setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
+        setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
+        setDisplay(currentValue - (step != null ? step : 1));
     }, [
         currentValue,
         setCurrentValue,
@@ -25225,14 +25296,12 @@ _c8 = IconUp;
         className: "react-var-ui-number"
     }, React__default.createElement("input", {
         className: "react-var-ui-number-input",
+        ref: inputRef,
         type: "number",
         min: min,
         max: max,
         step: step,
-        value: rounded.toString(),
-        onChange: function onChange1(e) {
-            return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
-        }
+        onChange: handleInputChange
     }), showButtons && React__default.createElement(React__default.Fragment, null, React__default.createElement("button", {
         title: "Increase",
         onClick: increaseValue
@@ -25241,7 +25310,7 @@ _c8 = IconUp;
         onClick: decreaseValue
     }, React__default.createElement(IconDown, null)))));
 };
-_s5(VarNumber, "JQTIhcBNK3UPPicgVWxgX95ZYWI=", false, function() {
+_s5(VarNumber, "UWBamD5I8zzaIi55opQGzddQk6M=", false, function() {
     return [
         useVarUIValue
     ];
@@ -25291,7 +25360,40 @@ _c10 = VarSelect;
     _s7();
     var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, min = _ref.min, max = _ref.max, step = _ref.step, integer = _ref.integer, defaultValue = _ref.defaultValue, showInput = _ref.showInput, showButtons = _ref.showButtons, disabled = _ref.disabled, className = _ref.className;
     var sliderRef = React.useRef(null);
+    var inputRef = React.useRef(null);
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
+    var _useState = React.useState(0), display = _useState[0], setDisplay = _useState[1];
+    React.useEffect(function() {
+        var _inputRef$current;
+        (_inputRef$current = inputRef.current) == null || _inputRef$current.addEventListener('blur', handleInputBlur);
+        return function() {
+            var _inputRef$current2;
+            return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
+        };
+    }, []);
+    React.useEffect(function() {
+        alert(2);
+        if (inputRef.current) {
+            var _value = roundValue(currentValue, min, max, step, !!integer).toString();
+            alert(_value);
+            inputRef.current.value = _value;
+        }
+    }, [
+        display
+    ]);
+    var handleInputChange = React.useCallback(function(e) {
+        setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+    }, [
+        setCurrentValue
+    ]);
+    var handleInputBlur = React.useCallback(function(e) {
+        var newValue = parseFloat(e.target.value);
+        setCurrentValue(roundValue(newValue, min, max, step, !!integer));
+        setDisplay(newValue);
+    }, [
+        setCurrentValue,
+        setDisplay
+    ]);
     var rounded = React.useMemo(function() {
         return roundValue(currentValue, min, max, step, !!integer);
     }, [
@@ -25315,15 +25417,18 @@ _c10 = VarSelect;
         var percent1 = (x - rect.left) / rect.width;
         var value1 = roundValue(min + (max - min) * percent1, min, max, step, !!integer);
         setCurrentValue(value1);
+        setDisplay(value1);
     }, [
         setCurrentValue,
+        setDisplay,
         integer,
         min,
         max,
         step
     ]);
     var increaseValue = React.useCallback(function() {
-        return setCurrentValue(roundValue(currentValue + step, min, max, step, !!integer));
+        var newValue = currentValue + (step != null ? step : 1);
+        setCurrentValue(roundValue(newValue, min, max, step, !!integer));
     }, [
         currentValue,
         setCurrentValue,
@@ -25333,7 +25438,8 @@ _c10 = VarSelect;
         step
     ]);
     var decreaseValue = React.useCallback(function() {
-        return setCurrentValue(roundValue(currentValue - step, min, max, step, !!integer));
+        var newValue = currentValue - (step != null ? step : 1);
+        setCurrentValue(roundValue(newValue, min, max, step, !!integer));
     }, [
         currentValue,
         setCurrentValue,
@@ -25369,13 +25475,11 @@ _c10 = VarSelect;
     })), showInput ? React__default.createElement("input", {
         className: "react-var-ui-slider-input",
         type: "number",
+        ref: inputRef,
         min: min,
         max: max,
         step: step,
-        value: rounded,
-        onChange: function onChange1(e) {
-            return setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
-        }
+        onChange: handleInputChange
     }) : React__default.createElement("span", null, rounded.toString()), showButtons && React__default.createElement(React__default.Fragment, null, React__default.createElement("button", {
         title: "Increase",
         onClick: increaseValue
@@ -25384,7 +25488,7 @@ _c10 = VarSelect;
         onClick: decreaseValue
     }, React__default.createElement(IconDown, null)))));
 };
-_s7(VarSlider, "MrFyhrrf3rWpCmgEvO7t0XQlEVc=", false, function() {
+_s7(VarSlider, "XPPQWqjvV2rv0lw2dFkNTOqulRM=", false, function() {
     return [
         useVarUIValue,
         reactUsePointerDrag.usePointerDragSimple

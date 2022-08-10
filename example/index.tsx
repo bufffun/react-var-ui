@@ -158,25 +158,30 @@ const App = () => {
             {/* </VarCategory> */}
           </VarUI>
         </div>
-        {/* <div className="values">
+        <div className="values">
           <strong>Values:</strong>
           <dl>
-            {Object.keys(values).map(key => (
-              <React.Fragment key={key}>
-                <dt>{key}</dt>
-                <dd>
-                  {typeof values[key] === 'boolean'
-                    ? values[key]
-                      ? 'true'
-                      : 'false'
-                    : Array.isArray(values[key])
-                    ? values[key].join(', ')
-                    : values[key]}
-                </dd>
-              </React.Fragment>
-            ))}
+            {Object.keys(values).map(function (key) {
+              if (key === "image") {
+                return <React.Fragment key={key}></React.Fragment>
+              }
+              return (
+                <React.Fragment key={key}>
+                  <dt>{key}</dt>
+                  <dd>
+                    {typeof values[key] === 'boolean'
+                      ? values[key]
+                        ? 'true'
+                        : 'false'
+                      : Array.isArray(values[key])
+                      ? values[key].join(', ')
+                      : values[key]}
+                  </dd>
+                </React.Fragment>
+              );
+            })}
           </dl>
-        </div> */}
+        </div>
       </div>
     </div>
   );

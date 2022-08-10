@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { FC, useCallback, useState, useRef, useEffect } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { roundValue } from './common/roundValue';
@@ -50,43 +50,66 @@ export const VarNumber: FC<IVarNumberProps> = ({
   disabled,
   className,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const rounded = useMemo(
-    () => roundValue(currentValue, min, max, step, !!integer),
-    [currentValue, min, max, step, integer]
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    inputRef.current?.addEventListener('blur', handleInputBlur);
+    return () => inputRef.current?.removeEventListener('blur', handleInputBlur);
+  }, []);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      const value = roundValue(
+        currentValue,
+        min,
+        max,
+        step,
+        !!integer
+      ).toString();
+      inputRef.current.value = value;
+    }
+  }, [display]);
+
+  const handleInputChange = useCallback(
+    e => {
+      setCurrentValue(
+        roundValue(parseFloat(e.target.value), min, max, step, !!integer)
+      );
+    },
+    [setCurrentValue]
   );
 
-  const increaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue + (step ?? 1), min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
+  const handleInputBlur = useCallback(
+    e => {
+      setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
+      setDisplay(parseFloat(e.target.value));
+    },
+    [setCurrentValue, setDisplay]
   );
 
-  const decreaseValue = useCallback(
-    () =>
-      setCurrentValue(
-        roundValue(currentValue - (step ?? 1), min, max, step, !!integer)
-      ),
-    [currentValue, setCurrentValue, integer, min, max, step]
-  );
+  const increaseValue = useCallback(() => {
+    setCurrentValue(roundValue(currentValue + (step ?? 1), min, max, step, !!integer));
+    setDisplay(currentValue + (step ?? 1));
+  }, [currentValue, setCurrentValue, integer, min, max, step]);
+
+  const decreaseValue = useCallback(() => {
+    setCurrentValue(roundValue(currentValue - (step ?? 1), min, max, step, !!integer));
+    setDisplay(currentValue - (step ?? 1));
+  }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <div className="react-var-ui-number">
         <input
           className="react-var-ui-number-input"
+          ref={inputRef}
           type="number"
           min={min}
           max={max}
           step={step}
-          value={rounded.toString()}
-          onChange={e =>
-            setCurrentValue(
-              roundValue(parseFloat(e.target.value), min, max, step, !!integer)
-            )
-          }
+          onChange={handleInputChange}
         />
         {showButtons && (
           <>
