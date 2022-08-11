@@ -21,7 +21,8 @@ import {
   VarAdd,
   VarGroup,
   VarGroupItem,
-  VarVector,
+  VarVector2,
+  VarVector3,
 } from '../.';
 
 const App = () => {
@@ -38,7 +39,8 @@ const App = () => {
     string: 'test',
     angle: 0,
     xy: [0, 0],
-    vector: [2, 3, 4],
+    vector2: [3, 3],
+    vector3: [2, 3, 4],
     image: { src: image },
   });
 
@@ -134,9 +136,16 @@ const App = () => {
               step={0.1}
               showButtons
             />
-            <VarVector
-              label="VarVector"
-              path="vector"
+            <VarVector2
+              label="VarVector2"
+              path="vector2"
+              min={[1, 1]}
+              max={[32, 20]}
+              step={[1, 1]}
+            />
+            <VarVector3
+              label="VarVector3"
+              path="vector3"
               min={[1, 2, 3]}
               max={[200, 20, 100]}
               step={[1, 1, 1]}

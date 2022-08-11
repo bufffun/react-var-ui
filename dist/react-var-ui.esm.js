@@ -900,7 +900,114 @@ var VarImage = function VarImage(_ref) {
  * Integer/float number component. Accepts and provides numbers.
  */
 
-var VarVector = function VarVector(_ref) {
+var VarVector2 = function VarVector2(_ref) {
+  var label = _ref.label,
+      path = _ref.path,
+      value = _ref.value,
+      onChange = _ref.onChange,
+      min = _ref.min,
+      max = _ref.max,
+      _ref$step = _ref.step,
+      step = _ref$step === void 0 ? [1, 1] : _ref$step,
+      integer = _ref.integer,
+      disabled = _ref.disabled,
+      className = _ref.className;
+  var inputRefX = useRef(null);
+  var inputRefY = useRef(null);
+
+  var _useState = useState([0, 0]),
+      display = _useState[0],
+      setDisplay = _useState[1];
+
+  var _useVarUIValue = useVarUIValue(path, value, onChange),
+      currentValue = _useVarUIValue[0],
+      setCurrentValue = _useVarUIValue[1];
+
+  var stateRef = React.useRef(currentValue);
+  var handleInputChange = useCallback(function (e, index) {
+    var newValue = [].concat(currentValue);
+    newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    stateRef.current = newValue;
+    setCurrentValue(newValue);
+  }, [setCurrentValue, currentValue, stateRef]);
+  var handleInputBlur = useCallback(function (e, index) {
+    var newValue = JSON.parse(JSON.stringify(stateRef.current));
+    newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    stateRef.current = newValue;
+    setCurrentValue(newValue);
+    setDisplay(newValue);
+  }, [setCurrentValue, setDisplay, currentValue]);
+  var handleInputBlurX = useCallback(function (e) {
+    handleInputBlur(e, 0);
+  }, [handleInputBlur]);
+  var handleInputBlurY = useCallback(function (e) {
+    handleInputBlur(e, 1);
+  }, [handleInputBlur]);
+  useEffect(function () {
+    var _inputRefX$current, _inputRefY$current;
+
+    (_inputRefX$current = inputRefX.current) == null ? void 0 : _inputRefX$current.addEventListener('blur', handleInputBlurX);
+    (_inputRefY$current = inputRefY.current) == null ? void 0 : _inputRefY$current.addEventListener('blur', handleInputBlurY);
+    return function () {
+      var _inputRefX$current2, _inputRefY$current2;
+
+      (_inputRefX$current2 = inputRefX.current) == null ? void 0 : _inputRefX$current2.removeEventListener('blur', handleInputBlurX);
+      (_inputRefY$current2 = inputRefY.current) == null ? void 0 : _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
+    };
+  }, []);
+  useEffect(function () {
+    if (inputRefX.current) {
+      inputRefX.current.value = roundedX.toString();
+    }
+
+    if (inputRefY.current) {
+      inputRefY.current.value = roundedY.toString();
+    }
+  }, [display]);
+  var roundedX = useMemo(function () {
+    return roundValue(currentValue[0], min ? min[0] : min, max ? max[0] : max, step[0], !!integer);
+  }, [currentValue, min, max, step, integer]);
+  var roundedY = useMemo(function () {
+    return roundValue(currentValue[1], min ? min[1] : min, max ? max[1] : max, step[1], !!integer);
+  }, [currentValue, min, max, step, integer]);
+  return React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("div", {
+    className: "react-var-ui-vector"
+  }, React.createElement("div", {
+    className: "react-var-ui-vector-wrapper"
+  }, React.createElement("span", null, "X"), React.createElement("input", {
+    className: "react-var-ui-vector-input",
+    type: "number",
+    ref: inputRefX,
+    min: min ? min[0] : min,
+    max: max ? max[0] : max,
+    step: step[0],
+    onChange: function onChange(e) {
+      return handleInputChange(e, 0);
+    }
+  })), React.createElement("div", {
+    className: "react-var-ui-vector-wrapper"
+  }, React.createElement("span", null, "Y"), React.createElement("input", {
+    className: "react-var-ui-vector-input",
+    type: "number",
+    ref: inputRefY,
+    min: min ? min[1] : min,
+    max: max ? max[1] : max,
+    step: step[1],
+    onChange: function onChange(e) {
+      return handleInputChange(e, 1);
+    }
+  }))));
+};
+
+/**
+ * Integer/float number component. Accepts and provides numbers.
+ */
+
+var VarVector3 = function VarVector3(_ref) {
   var label = _ref.label,
       path = _ref.path,
       value = _ref.value,
@@ -1163,5 +1270,5 @@ var VarCategory = function VarCategory(_ref) {
   }, label), !!children && React.createElement("div", null, children));
 };
 
-export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarVector, VarXY, useVarUIValue };
+export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarVector2, VarVector3, VarXY, useVarUIValue };
 //# sourceMappingURL=react-var-ui.esm.js.map

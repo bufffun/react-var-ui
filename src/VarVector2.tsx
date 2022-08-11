@@ -6,28 +6,27 @@ import React, {
   useRef,
   useEffect,
 } from 'react';
-// import React, { FC, useCallback, useMemo } from 'react';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { roundValue } from './common/roundValue';
 import { IVarBaseInputProps, VarBase } from './VarBase';
 
-export type IVarVectorValue = [number, number, number];
-export interface IVarVectorProps extends IVarBaseInputProps<IVarVectorValue> {
+export type IVarVector2Value = [number, number];
+export interface IVarVector2Props extends IVarBaseInputProps<IVarVector2Value> {
   /**
    * Minimum value.
    */
-  min?: IVarVectorValue;
+  min?: IVarVector2Value;
 
   /**
    * Maximum value.
    */
-  max?: IVarVectorValue;
+  max?: IVarVector2Value;
 
   /**
    * Step.
    */
-  step?: IVarVectorValue;
+  step?: IVarVector2Value;
 
   /**
    * Should the end result be rounded to an integer value.
@@ -38,28 +37,27 @@ export interface IVarVectorProps extends IVarBaseInputProps<IVarVectorValue> {
 /**
  * Integer/float number component. Accepts and provides numbers.
  */
-export const VarVector: FC<IVarVectorProps> = ({
+export const VarVector2: FC<IVarVector2Props> = ({
   label,
   path,
   value,
   onChange,
   min,
   max,
-  step = [1, 1, 1],
+  step = [1, 1],
   integer,
   disabled,
   className,
 }) => {
   const inputRefX = useRef<HTMLInputElement>(null);
   const inputRefY = useRef<HTMLInputElement>(null);
-  const inputRefZ = useRef<HTMLInputElement>(null);
-  const [display, setDisplay] = useState([0, 0, 0]);
+  const [display, setDisplay] = useState([0, 0]);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const stateRef = React.useRef(currentValue);
 
   const handleInputChange = useCallback(
     (e, index) => {
-      const newValue = [...currentValue] as IVarVectorValue;
+      const newValue = [...currentValue] as IVarVector2Value;
       newValue[index] = roundValue(
         parseFloat(e.target.value),
         min ? min[index] : min,
@@ -77,7 +75,7 @@ export const VarVector: FC<IVarVectorProps> = ({
     (e, index) => {
       const newValue = JSON.parse(
         JSON.stringify(stateRef.current)
-      ) as IVarVectorValue;
+      ) as IVarVector2Value;
       newValue[index] = roundValue(
         parseFloat(e.target.value),
         min ? min[index] : min,
@@ -106,21 +104,13 @@ export const VarVector: FC<IVarVectorProps> = ({
     [handleInputBlur]
   );
 
-  const handleInputBlurZ = useCallback(
-    e => {
-      handleInputBlur(e, 2);
-    },
-    [handleInputBlur]
-  );
 
   useEffect(() => {
     inputRefX.current?.addEventListener('blur', handleInputBlurX);
     inputRefY.current?.addEventListener('blur', handleInputBlurY);
-    inputRefZ.current?.addEventListener('blur', handleInputBlurZ);
     return () => {
       inputRefX.current?.removeEventListener('blur', handleInputBlurX);
       inputRefY.current?.removeEventListener('blur', handleInputBlurY);
-      inputRefZ.current?.removeEventListener('blur', handleInputBlurZ);
     };
   }, []);
 
@@ -130,9 +120,6 @@ export const VarVector: FC<IVarVectorProps> = ({
     }
     if (inputRefY.current) {
       inputRefY.current.value = roundedY.toString();
-    }
-    if (inputRefZ.current) {
-      inputRefZ.current.value = roundedZ.toString();
     }
   }, [display]);
 
@@ -155,18 +142,6 @@ export const VarVector: FC<IVarVectorProps> = ({
         min ? min[1] : min,
         max ? max[1] : max,
         step[1],
-        !!integer
-      ),
-    [currentValue, min, max, step, integer]
-  );
-
-  const roundedZ = useMemo(
-    () =>
-      roundValue(
-        currentValue[2],
-        min ? min[2] : min,
-        max ? max[2] : max,
-        step[2],
         !!integer
       ),
     [currentValue, min, max, step, integer]
@@ -198,19 +173,6 @@ export const VarVector: FC<IVarVectorProps> = ({
             max={max ? max[1] : max}
             step={step[1]}
             onChange={e => handleInputChange(e, 1)}
-          />
-        </div>
-
-        <div className="react-var-ui-vector-wrapper">
-          <span>Z</span>
-          <input
-            className="react-var-ui-vector-input"
-            type="number"
-            ref={inputRefZ}
-            min={min ? min[2] : min}
-            max={max ? max[2] : max}
-            step={step[2]}
-            onChange={e => handleInputChange(e, 2)}
           />
         </div>
       </div>
