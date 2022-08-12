@@ -246,9 +246,9 @@ var VarColor = function VarColor(_ref) {
   }, React__default.createElement("div", {
     className: "react-var-ui-color-color",
     title: "Color preview",
-    style: {
+    style: currentValue ? {
       background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
-    }
+    } : {}
   })), show ? React__default.createElement("div", {
     className: "react-var-ui-color-popover"
   }, React__default.createElement(reactColor.SketchPicker, {

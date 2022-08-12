@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState, useEffect } from 'react';
 import { RGBColor, SketchPicker } from 'react-color';
-import tinycolor from 'tinycolor2'
+import tinycolor from 'tinycolor2';
 
 import { useVarUIValue } from './common/VarUIContext';
 import { IVarBaseInputProps, VarBase } from './VarBase';
@@ -60,22 +60,28 @@ export const VarColor: FC<IVarColorProps> = ({
   return (
     <VarBase label={label} disabled={disabled} className={className}>
       <span>
-        <span className="react-var-ui-color-value">{tinycolor(currentValue).toHexString()}</span>
+        <span className="react-var-ui-color-value">
+          {tinycolor(currentValue).toHexString()}
+        </span>
         <div className="react-var-ui-color">
           <div className="react-var-ui-color-swatch" onClick={toggle}>
             <div
               className="react-var-ui-color-color"
               title="Color preview"
-              style={{
-                background:
-                  'rgb(' +
-                  currentValue.r +
-                  ',' +
-                  currentValue.g +
-                  ',' +
-                  currentValue.b +
-                  ')',
-              }}
+              style={
+                currentValue
+                  ? {
+                      background:
+                        'rgb(' +
+                        currentValue.r +
+                        ',' +
+                        currentValue.g +
+                        ',' +
+                        currentValue.b +
+                        ')',
+                    }
+                  : {}
+              }
             />
           </div>
           {show ? (
