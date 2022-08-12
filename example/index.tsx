@@ -31,8 +31,8 @@ const App = () => {
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
   const [values, setValues] = React.useState({
     toggle: true,
-    color: '#FF0000',
-    colorAlpha: '#FF0000DD',
+    color: { r: 254.5, g: 0, b: 0 },
+    colorAlpha: { r: 0, g: 220, b: 10 },
     select: 'zero',
     slider: 0.4,
     number: 1,
@@ -42,6 +42,8 @@ const App = () => {
     vector2: [3, 3],
     vector3: [2, 3, 4],
     image: { src: image },
+    test: { number: 0.3 },
+    layers: [{ number: 0.2 }],
   });
 
   const colorChange = (path: any, value: any) => {
@@ -58,7 +60,7 @@ const App = () => {
             {/* <VarCategory label="Example"> */}
             <VarCategory label="Example" showDash={true}>
               <VarColor label="VarColor" path="color" onChange={colorChange} />
-              <VarDisplay label="VarDisplay" path="color" />
+              <VarDisplay label="VarDisplay" path="string" />
               <VarToggle label="VarToggle" path="toggle" />
             </VarCategory>
             <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
@@ -71,7 +73,7 @@ const App = () => {
                 }}
               ></div>
             </VarAdd>
-            <VarDisplay label="VarDisplay" path="color" />
+            <VarDisplay label="VarDisplay" path="string" />
             <VarGroup label="Group">
               <VarGroupItem>
                 <VarToggle label="VarToggle" path="toggle" />
@@ -136,6 +138,15 @@ const App = () => {
               step={0.1}
               showButtons
             />
+            <VarNumber
+              label="VarNumberDeep"
+              path="layers[0].number"
+              min={0.2}
+              max={0.8}
+              step={0.1}
+              showButtons
+              onChange={colorChange}
+            />
             <VarVector2
               label="VarVector2"
               path="vector2"
@@ -171,8 +182,18 @@ const App = () => {
           <strong>Values:</strong>
           <dl>
             {Object.keys(values).map(function (key) {
-              if (key === "image") {
-                return <React.Fragment key={key}></React.Fragment>
+              if (
+                key === 'image' ||
+                key === 'layers' ||
+                key === 'test' ||
+                key === 'color' ||
+                key === 'colorAlpha'
+              ) {
+                return (
+                  <React.Fragment key={key}>
+                    <span>{JSON.stringify(values[key])}</span>
+                  </React.Fragment>
+                );
               }
               return (
                 <React.Fragment key={key}>

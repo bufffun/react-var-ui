@@ -397,8 +397,16 @@ const App = ()=>{
     image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
     const [values, setValues] = _react.useState({
         toggle: true,
-        color: '#FF0000',
-        colorAlpha: '#FF0000DD',
+        color: {
+            r: 254.5,
+            g: 0,
+            b: 0
+        },
+        colorAlpha: {
+            r: 0,
+            g: 220,
+            b: 10
+        },
         select: 'zero',
         slider: 0.4,
         number: 1,
@@ -419,7 +427,15 @@ const App = ()=>{
         ],
         image: {
             src: image
-        }
+        },
+        test: {
+            number: 0.3
+        },
+        layers: [
+            {
+                number: 0.2
+            }
+        ]
     });
     const colorChange = (path, value)=>{
         console.log(path);
@@ -428,27 +444,27 @@ const App = ()=>{
     return(/*#__PURE__*/ _react.createElement("div", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 53
+            lineNumber: 55
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("h1", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 54
+            lineNumber: 56
         },
         __self: undefined
     }, "VarUI example"), /*#__PURE__*/ _react.createElement("div", {
         className: "example",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 55
+            lineNumber: 57
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
         className: "wrapper",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 56
+            lineNumber: 58
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarUI, {
@@ -456,7 +472,7 @@ const App = ()=>{
         values: values,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 57
+            lineNumber: 59
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarCategory, {
@@ -464,7 +480,7 @@ const App = ()=>{
         showDash: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 59
+            lineNumber: 61
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -473,15 +489,15 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 60
+            lineNumber: 62
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
         label: "VarDisplay",
-        path: "color",
+        path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 61
+            lineNumber: 63
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarToggle, {
@@ -489,7 +505,7 @@ const App = ()=>{
         path: "toggle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 62
+            lineNumber: 64
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -498,14 +514,14 @@ const App = ()=>{
         alpha: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 64
+            lineNumber: 66
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarAdd, {
         label: "ADD",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 65
+            lineNumber: 67
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
@@ -516,28 +532,28 @@ const App = ()=>{
         },
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 66
+            lineNumber: 68
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
         label: "VarDisplay",
-        path: "color",
+        path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 74
+            lineNumber: 76
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarGroup, {
         label: "Group",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 75
+            lineNumber: 77
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 76
+            lineNumber: 78
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarToggle, {
@@ -545,13 +561,13 @@ const App = ()=>{
         path: "toggle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 77
+            lineNumber: 79
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 79
+            lineNumber: 81
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -560,13 +576,13 @@ const App = ()=>{
         alpha: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 80
+            lineNumber: 82
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 82
+            lineNumber: 84
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarImage, {
@@ -575,7 +591,7 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 83
+            lineNumber: 85
         },
         __self: undefined
     }))), /*#__PURE__*/ _react.createElement(_.VarSelect, {
@@ -593,7 +609,7 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 91
+            lineNumber: 93
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -604,7 +620,7 @@ const App = ()=>{
         step: 0.1,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 99
+            lineNumber: 101
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -617,7 +633,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 106
+            lineNumber: 108
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -629,7 +645,7 @@ const App = ()=>{
         showInput: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 115
+            lineNumber: 117
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -641,7 +657,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 123
+            lineNumber: 125
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -653,7 +669,20 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 131
+            lineNumber: 133
+        },
+        __self: undefined
+    }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
+        label: "VarNumberDeep",
+        path: "layers[0].number",
+        min: 0.2,
+        max: 0.8,
+        step: 0.1,
+        showButtons: true,
+        onChange: colorChange,
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 141
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarVector2, {
@@ -673,7 +702,7 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 139
+            lineNumber: 150
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarVector3, {
@@ -696,7 +725,7 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 146
+            lineNumber: 157
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -704,7 +733,7 @@ const App = ()=>{
         path: "number",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 153
+            lineNumber: 164
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -712,7 +741,7 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 154
+            lineNumber: 165
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -721,7 +750,7 @@ const App = ()=>{
         multiline: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 155
+            lineNumber: 166
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarAngle, {
@@ -729,7 +758,7 @@ const App = ()=>{
         path: "angle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 156
+            lineNumber: 167
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarXY, {
@@ -737,7 +766,7 @@ const App = ()=>{
         path: "xy",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 157
+            lineNumber: 168
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -746,7 +775,7 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 158
+            lineNumber: 169
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -756,54 +785,60 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 162
+            lineNumber: 173
         },
         __self: undefined
     }))), /*#__PURE__*/ _react.createElement("div", {
         className: "values",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 170
+            lineNumber: 181
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("strong", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 171
+            lineNumber: 182
         },
         __self: undefined
     }, "Values:"), /*#__PURE__*/ _react.createElement("dl", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 172
+            lineNumber: 183
         },
         __self: undefined
     }, Object.keys(values).map(function(key) {
-        if (key === "image") return(/*#__PURE__*/ _react.createElement(_react.Fragment, {
+        if (key === 'image' || key === 'layers' || key === 'test' || key === 'color' || key === 'colorAlpha') return(/*#__PURE__*/ _react.createElement(_react.Fragment, {
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 175
+                lineNumber: 193
             },
             __self: this
-        }));
+        }, /*#__PURE__*/ _react.createElement("span", {
+            __source: {
+                fileName: "/Users/renes/react-var-ui/example/index.tsx",
+                lineNumber: 194
+            },
+            __self: this
+        }, JSON.stringify(values[key]))));
         return(/*#__PURE__*/ _react.createElement(_react.Fragment, {
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 178
+                lineNumber: 199
             },
             __self: this
         }, /*#__PURE__*/ _react.createElement("dt", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 179
+                lineNumber: 200
             },
             __self: this
         }, key), /*#__PURE__*/ _react.createElement("dd", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 180
+                lineNumber: 201
             },
             __self: this
         }, typeof values[key] === 'boolean' ? values[key] ? 'true' : 'false' : Array.isArray(values[key]) ? values[key].join(', ') : values[key])));
@@ -812,7 +847,7 @@ const App = ()=>{
 _reactDom.render(/*#__PURE__*/ _react.createElement(App, {
     __source: {
         fileName: "/Users/renes/react-var-ui/example/index.tsx",
-        lineNumber: 199
+        lineNumber: 220
     },
     __self: undefined
 }), document.getElementById('root'));
@@ -24964,6 +24999,7 @@ var set = _interopDefault(require('lodash.set'));
 var result = _interopDefault(require('lodash.result'));
 var reactUsePointerDrag = require('react-use-pointer-drag');
 var reactColor = require('react-color');
+var tinycolor = _interopDefault(require('tinycolor2'));
 var VarUIContext = /*#__PURE__*/ React.createContext(undefined);
 /**
  * Simple function used for custom input components.
@@ -25128,7 +25164,7 @@ _c4 = VarButton;
  * Color picker component. Returns and accepts values in form of hex color strings.
  */ var VarColor = function VarColor1(_ref) {
     _s3();
-    var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, alpha = _ref.alpha, disabled = _ref.disabled, className = _ref.className;
+    var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, disabled = _ref.disabled, className = _ref.className;
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var _useState = React.useState(false), show = _useState[0], setShow = _useState[1];
     var handleCloseClick = React.useCallback(function(event) {
@@ -25164,7 +25200,7 @@ _c4 = VarButton;
         className: className
     }, React__default.createElement("span", null, React__default.createElement("span", {
         className: "react-var-ui-color-value"
-    }, currentValue), React__default.createElement("div", {
+    }, tinycolor(currentValue).toHexString()), React__default.createElement("div", {
         className: "react-var-ui-color"
     }, React__default.createElement("div", {
         className: "react-var-ui-color-swatch",
@@ -25173,21 +25209,16 @@ _c4 = VarButton;
         className: "react-var-ui-color-color",
         title: "Color preview",
         style: {
-            background: currentValue
+            background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
         }
     })), show ? React__default.createElement("div", {
         className: "react-var-ui-color-popover"
     }, React__default.createElement(reactColor.SketchPicker, {
         color: currentValue,
         onChange: function onChange1(result1) {
-            if (alpha) {
-                var _result$rgb$a;
-                var alphaValue = Math.round(((_result$rgb$a = result1.rgb.a) != null ? _result$rgb$a : 1) * 255).toString(16);
-                if (alphaValue.length === 1) alphaValue = '0' + alphaValue;
-                setCurrentValue(result1.hex + alphaValue);
-            } else setCurrentValue(result1.hex);
+            setCurrentValue(result1.rgb);
         },
-        disableAlpha: !alpha
+        disableAlpha: true
     })) : null)));
 };
 _s3(VarColor, "2yxRgii0wo2MwrFOdNJAGUKDVK0=", false, function() {
@@ -26246,7 +26277,7 @@ $RefreshReg$(_c24, "VarCategory");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"dXSuf","lodash.clonedeep":"eTQYM","lodash.set":"hMVF6","lodash.result":"jWtux","react-use-pointer-drag":"32rWk","react-color":"6MrBG","../example/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6e8vO"}],"eTQYM":[function(require,module,exports) {
+},{"react":"dXSuf","lodash.clonedeep":"eTQYM","lodash.set":"hMVF6","lodash.result":"jWtux","react-use-pointer-drag":"32rWk","react-color":"6MrBG","tinycolor2":"9tFml","../example/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6e8vO"}],"eTQYM":[function(require,module,exports) {
 var global = arguments[3];
 /**
  * lodash (Custom Build) <https://lodash.com/>

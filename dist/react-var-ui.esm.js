@@ -4,6 +4,7 @@ import set from 'lodash.set';
 import result from 'lodash.result';
 import { usePointerDragSimple } from 'react-use-pointer-drag';
 import { SketchPicker } from 'react-color';
+import tinycolor from 'tinycolor2';
 
 var VarUIContext = /*#__PURE__*/createContext(undefined);
 /**
@@ -184,7 +185,6 @@ var VarColor = function VarColor(_ref) {
       path = _ref.path,
       value = _ref.value,
       onChange = _ref.onChange,
-      alpha = _ref.alpha,
       disabled = _ref.disabled,
       className = _ref.className;
 
@@ -231,7 +231,7 @@ var VarColor = function VarColor(_ref) {
     className: className
   }, React.createElement("span", null, React.createElement("span", {
     className: "react-var-ui-color-value"
-  }, currentValue), React.createElement("div", {
+  }, tinycolor(currentValue).toHexString()), React.createElement("div", {
     className: "react-var-ui-color"
   }, React.createElement("div", {
     className: "react-var-ui-color-swatch",
@@ -240,28 +240,16 @@ var VarColor = function VarColor(_ref) {
     className: "react-var-ui-color-color",
     title: "Color preview",
     style: {
-      background: currentValue
+      background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
     }
   })), show ? React.createElement("div", {
     className: "react-var-ui-color-popover"
   }, React.createElement(SketchPicker, {
     color: currentValue,
     onChange: function onChange(result) {
-      if (alpha) {
-        var _result$rgb$a;
-
-        var alphaValue = Math.round(((_result$rgb$a = result.rgb.a) != null ? _result$rgb$a : 1.0) * 255).toString(16);
-
-        if (alphaValue.length === 1) {
-          alphaValue = '0' + alphaValue;
-        }
-
-        setCurrentValue(result.hex + alphaValue);
-      } else {
-        setCurrentValue(result.hex);
-      }
+      setCurrentValue(result.rgb);
     },
-    disableAlpha: !alpha
+    disableAlpha: true
   })) : null)));
 };
 
