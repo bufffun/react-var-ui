@@ -723,6 +723,10 @@ const App = ()=>{
             1,
             1
         ],
+        onChange: (p, v)=>{
+            console.log(p);
+            console.log(v);
+        },
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
             lineNumber: 157
@@ -733,7 +737,7 @@ const App = ()=>{
         path: "number",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 164
+            lineNumber: 166
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -741,7 +745,7 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 165
+            lineNumber: 167
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -750,7 +754,7 @@ const App = ()=>{
         multiline: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 166
+            lineNumber: 168
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarAngle, {
@@ -758,7 +762,7 @@ const App = ()=>{
         path: "angle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 167
+            lineNumber: 169
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarXY, {
@@ -766,7 +770,7 @@ const App = ()=>{
         path: "xy",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 168
+            lineNumber: 170
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -775,7 +779,7 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 169
+            lineNumber: 171
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -785,26 +789,26 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 173
+            lineNumber: 175
         },
         __self: undefined
     }))), /*#__PURE__*/ _react.createElement("div", {
         className: "values",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 181
+            lineNumber: 183
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("strong", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 182
+            lineNumber: 184
         },
         __self: undefined
     }, "Values:"), /*#__PURE__*/ _react.createElement("dl", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 183
+            lineNumber: 185
         },
         __self: undefined
     }, Object.keys(values).map(function(key) {
@@ -812,13 +816,13 @@ const App = ()=>{
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 193
+                lineNumber: 195
             },
             __self: this
         }, /*#__PURE__*/ _react.createElement("span", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 194
+                lineNumber: 196
             },
             __self: this
         }, JSON.stringify(values[key]))));
@@ -826,19 +830,19 @@ const App = ()=>{
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 199
+                lineNumber: 201
             },
             __self: this
         }, /*#__PURE__*/ _react.createElement("dt", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 200
+                lineNumber: 202
             },
             __self: this
         }, key), /*#__PURE__*/ _react.createElement("dd", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 201
+                lineNumber: 203
             },
             __self: this
         }, typeof values[key] === 'boolean' ? values[key] ? 'true' : 'false' : Array.isArray(values[key]) ? values[key].join(', ') : values[key])));
@@ -847,7 +851,7 @@ const App = ()=>{
 _reactDom.render(/*#__PURE__*/ _react.createElement(App, {
     __source: {
         fileName: "/Users/renes/react-var-ui/example/index.tsx",
-        lineNumber: 220
+        lineNumber: 222
     },
     __self: undefined
 }), document.getElementById('root'));
@@ -25208,8 +25212,9 @@ _c4 = VarButton;
     }, React__default.createElement("div", {
         className: "react-var-ui-color-color",
         title: "Color preview",
-        style: {
+        style: currentValue ? {
             background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
+        } : {
         }
     })), show ? React__default.createElement("div", {
         className: "react-var-ui-color-popover"
@@ -25300,7 +25305,9 @@ _c8 = IconUp;
             var _inputRef$current2;
             return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
         };
-    }, []);
+    }, [
+        currentValue
+    ]);
     React.useEffect(function() {
         if (inputRef.current) {
             var _value = roundValue(currentValue, min, max, step, !!integer).toString();
@@ -25425,7 +25432,9 @@ _c10 = VarSelect;
             var _inputRef$current2;
             return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
         };
-    }, []);
+    }, [
+        currentValue
+    ]);
     React.useEffect(function() {
         if (inputRef.current) {
             var _value = roundValue(currentValue, min, max, step, !!integer).toString();
@@ -25898,7 +25907,9 @@ _c17 = VarImage;
             (_inputRefX$current2 = inputRefX.current) == null || _inputRefX$current2.removeEventListener('blur', handleInputBlurX);
             (_inputRefY$current2 = inputRefY.current) == null || _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
         };
-    }, []);
+    }, [
+        currentValue
+    ]);
     React.useEffect(function() {
         if (inputRefX.current) inputRefX.current.value = roundedX.toString();
         if (inputRefY.current) inputRefY.current.value = roundedY.toString();
@@ -26027,7 +26038,9 @@ _c18 = VarVector2;
             (_inputRefY$current2 = inputRefY.current) == null || _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
             (_inputRefZ$current2 = inputRefZ.current) == null || _inputRefZ$current2.removeEventListener('blur', handleInputBlurZ);
         };
-    }, []);
+    }, [
+        currentValue
+    ]);
     React.useEffect(function() {
         if (inputRefX.current) inputRefX.current.value = roundedX.toString();
         if (inputRefY.current) inputRefY.current.value = roundedY.toString();

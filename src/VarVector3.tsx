@@ -121,7 +121,7 @@ export const VarVector3: FC<IVarVector3Props> = ({
       inputRefY.current?.removeEventListener('blur', handleInputBlurY);
       inputRefZ.current?.removeEventListener('blur', handleInputBlurZ);
     };
-  }, []);
+  }, [currentValue]);
 
   useEffect(() => {
     if (inputRefX.current) {

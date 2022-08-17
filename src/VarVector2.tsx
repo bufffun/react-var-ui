@@ -112,7 +112,7 @@ export const VarVector2: FC<IVarVector2Props> = ({
       inputRefX.current?.removeEventListener('blur', handleInputBlurX);
       inputRefY.current?.removeEventListener('blur', handleInputBlurY);
     };
-  }, []);
+  }, [currentValue]);
 
   useEffect(() => {
     if (inputRefX.current) {

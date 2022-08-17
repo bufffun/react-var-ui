@@ -33,6 +33,7 @@ $transition-time: 0.2s;
       position: relative;
       height: 22px;
       width: 22px;
+      cursor: pointer;
     }
 
     &-popover {
@@ -139,6 +140,7 @@ $transition-time: 0.2s;
       border: 1px solid #515151;
       border-radius: 6px;
       overflow: hidden;
+      cursor: pointer;
 
       &-preview {
         height: 32px;

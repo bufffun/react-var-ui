@@ -367,7 +367,7 @@ var VarNumber = function VarNumber(_ref) {
 
       return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
     };
-  }, []);
+  }, [currentValue]);
   useEffect(function () {
     if (inputRef.current) {
       var _value = roundValue(currentValue, min, max, step, !!integer).toString();
@@ -494,7 +494,7 @@ var VarSlider = function VarSlider(_ref) {
 
       return (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.removeEventListener('blur', handleInputBlur);
     };
-  }, []);
+  }, [currentValue]);
   useEffect(function () {
     if (inputRef.current) {
       var _value = roundValue(currentValue, min, max, step, !!integer).toString();
@@ -942,7 +942,7 @@ var VarVector2 = function VarVector2(_ref) {
       (_inputRefX$current2 = inputRefX.current) == null ? void 0 : _inputRefX$current2.removeEventListener('blur', handleInputBlurX);
       (_inputRefY$current2 = inputRefY.current) == null ? void 0 : _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
     };
-  }, []);
+  }, [currentValue]);
   useEffect(function () {
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();
@@ -1055,7 +1055,7 @@ var VarVector3 = function VarVector3(_ref) {
       (_inputRefY$current2 = inputRefY.current) == null ? void 0 : _inputRefY$current2.removeEventListener('blur', handleInputBlurY);
       (_inputRefZ$current2 = inputRefZ.current) == null ? void 0 : _inputRefZ$current2.removeEventListener('blur', handleInputBlurZ);
     };
-  }, []);
+  }, [currentValue]);
   useEffect(function () {
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();

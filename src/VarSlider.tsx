@@ -72,7 +72,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   useEffect(() => {
     inputRef.current?.addEventListener('blur', handleInputBlur);
     return () => inputRef.current?.removeEventListener('blur', handleInputBlur);
-  }, []);
+  }, [currentValue]);
 
   useEffect(() => {
     if (inputRef.current) {

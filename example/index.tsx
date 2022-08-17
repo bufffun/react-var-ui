@@ -160,6 +160,8 @@ const App = () => {
               min={[1, 2, 3]}
               max={[200, 20, 100]}
               step={[1, 1, 1]}
+              onChange={(p, v) => {console.log(p);
+              console.log(v);}}
             />
             <VarNumber label="VarNumber (no buttons)" path="number" />
             <VarString label="VarString" path="string" />
