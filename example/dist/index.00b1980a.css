@@ -10,6 +10,7 @@
   position: relative;
   height: 22px;
   width: 22px;
+  cursor: pointer;
 }
 .react-var-ui-add-popover {
   position: absolute;
@@ -29,6 +30,7 @@
   position: relative;
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 .react-var-ui-group .react-var-ui-group-item:first-child:before {
   position: absolute;
@@ -102,6 +104,7 @@
   border: 1px solid #515151;
   border-radius: 6px;
   overflow: hidden;
+  cursor: pointer;
 }
 .react-var-ui-image-wrapper-preview {
   height: 32px;

@@ -1160,15 +1160,14 @@ var VarAdd = function VarAdd(_ref) {
       show = _useState[0],
       setShow = _useState[1];
 
-  var handleCloseClick = useCallback(function (event) {
-    var _event$target;
-
-    var popup = (_event$target = event.target) == null ? void 0 : _event$target.closest('.react-var-ui-add-popover');
-    var has_picker = document.getElementsByClassName('react-var-ui-add-popover').length != 0;
-
-    if (has_picker && show && popup == null) {
-      setShow(false);
-    }
+  var handleCloseClick = useCallback(function (_) {
+    // const popup = (event.target as Element)?.closest(
+    //   '.react-var-ui-add-popover'
+    // );
+    // const has_picker =
+    //   document.getElementsByClassName('react-var-ui-add-popover').length != 0;
+    // if (has_picker && show && popup == null) {
+    setShow(false); // }
   }, [show, setShow]);
   useEffect(function () {
     if (show) {

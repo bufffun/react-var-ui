@@ -23,15 +23,15 @@ export const VarAdd: FC<IVarAddProps> = ({
   const [show, setShow] = useState(false);
 
   const handleCloseClick = useCallback(
-    (event: MouseEvent) => {
-      const popup = (event.target as Element)?.closest(
-        '.react-var-ui-add-popover'
-      );
-      const has_picker =
-        document.getElementsByClassName('react-var-ui-add-popover').length != 0;
-      if (has_picker && show && popup == null) {
+    (_: MouseEvent) => {
+      // const popup = (event.target as Element)?.closest(
+      //   '.react-var-ui-add-popover'
+      // );
+      // const has_picker =
+      //   document.getElementsByClassName('react-var-ui-add-popover').length != 0;
+      // if (has_picker && show && popup == null) {
         setShow(false);
-      }
+      // }
     },
     [show, setShow]
   );
