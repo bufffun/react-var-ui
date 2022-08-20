@@ -54,10 +54,12 @@ export const VarVector3: FC<IVarVector3Props> = ({
   const inputRefZ = useRef<HTMLInputElement>(null);
   const [display, setDisplay] = useState([0, 0, 0]);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const stateRef = React.useRef(currentValue);
+  const stateRef = useRef(currentValue);
+  const updateFlagRef = useRef<Boolean>(true);
 
   const handleInputChange = useCallback(
     (e, index) => {
+      updateFlagRef.current = false;
       const newValue = [...currentValue] as IVarVector3Value;
       newValue[index] = roundValue(
         parseFloat(e.target.value),
@@ -84,6 +86,7 @@ export const VarVector3: FC<IVarVector3Props> = ({
         step[index],
         !!integer
       );
+      updateFlagRef.current = true;
       stateRef.current = newValue;
       setCurrentValue(newValue);
       setDisplay(newValue);
@@ -124,6 +127,9 @@ export const VarVector3: FC<IVarVector3Props> = ({
   }, [currentValue]);
 
   useEffect(() => {
+    if (!updateFlagRef.current) {
+      return;
+    }
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();
     }
@@ -133,7 +139,7 @@ export const VarVector3: FC<IVarVector3Props> = ({
     if (inputRefZ.current) {
       inputRefZ.current.value = roundedZ.toString();
     }
-  }, [display]);
+  }, [currentValue, display]);
 
   const roundedX = useMemo(
     () =>

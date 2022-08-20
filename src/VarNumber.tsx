@@ -53,6 +53,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const [display, setDisplay] = useState(0);
+  const updateFlagRef = useRef<Boolean>(true);
 
   useEffect(() => {
     inputRef.current?.addEventListener('blur', handleInputBlur);
@@ -60,7 +61,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
   }, [currentValue]);
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputRef.current && updateFlagRef.current) {
       const value = roundValue(
         currentValue,
         min,
@@ -70,10 +71,11 @@ export const VarNumber: FC<IVarNumberProps> = ({
       ).toString();
       inputRef.current.value = value;
     }
-  }, [display]);
+  }, [currentValue, display]);
 
   const handleInputChange = useCallback(
     e => {
+      updateFlagRef.current = false;
       setCurrentValue(
         roundValue(parseFloat(e.target.value), min, max, step, !!integer)
       );
@@ -83,6 +85,7 @@ export const VarNumber: FC<IVarNumberProps> = ({
 
   const handleInputBlur = useCallback(
     e => {
+      updateFlagRef.current = true;
       setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
       setDisplay(parseFloat(e.target.value));
     },
@@ -90,11 +93,13 @@ export const VarNumber: FC<IVarNumberProps> = ({
   );
 
   const increaseValue = useCallback(() => {
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(currentValue + (step ?? 1), min, max, step, !!integer));
     setDisplay(currentValue + (step ?? 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   const decreaseValue = useCallback(() => {
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(currentValue - (step ?? 1), min, max, step, !!integer));
     setDisplay(currentValue - (step ?? 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);

@@ -53,7 +53,9 @@ export const VarVector2: FC<IVarVector2Props> = ({
   const inputRefY = useRef<HTMLInputElement>(null);
   const [display, setDisplay] = useState([0, 0]);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
-  const stateRef = React.useRef(currentValue);
+  const stateRef = useRef(currentValue);
+  const updateFlagRef = useRef<Boolean>(true);
+
 
   const handleInputChange = useCallback(
     (e, index) => {
@@ -65,6 +67,7 @@ export const VarVector2: FC<IVarVector2Props> = ({
         step[index],
         !!integer
       );
+      updateFlagRef.current = false;
       stateRef.current = newValue;
       setCurrentValue(newValue);
     },
@@ -83,6 +86,7 @@ export const VarVector2: FC<IVarVector2Props> = ({
         step[index],
         !!integer
       );
+      updateFlagRef.current = true;
       stateRef.current = newValue;
       setCurrentValue(newValue);
       setDisplay(newValue);
@@ -115,13 +119,16 @@ export const VarVector2: FC<IVarVector2Props> = ({
   }, [currentValue]);
 
   useEffect(() => {
+    if (!updateFlagRef.current) {
+      return;
+    }
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();
     }
     if (inputRefY.current) {
       inputRefY.current.value = roundedY.toString();
     }
-  }, [display]);
+  }, [currentValue, display]);
 
   const roundedX = useMemo(
     () =>

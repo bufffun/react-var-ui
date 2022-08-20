@@ -68,6 +68,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentValue, setCurrentValue] = useVarUIValue(path, value, onChange);
   const [display, setDisplay] = useState(0);
+  const updateFlagRef = useRef<Boolean>(true);
 
   useEffect(() => {
     inputRef.current?.addEventListener('blur', handleInputBlur);
@@ -75,7 +76,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
   }, [currentValue]);
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (inputRef.current && updateFlagRef.current) {
       const value = roundValue(
         currentValue,
         min,
@@ -85,10 +86,11 @@ export const VarSlider: FC<IVarSliderProps> = ({
       ).toString();
       inputRef.current.value = value;
     }
-  }, [display]);
+  }, [currentValue, display]);
 
   const handleInputChange = useCallback(
     e => {
+      updateFlagRef.current = false;
       setCurrentValue(
         roundValue(parseFloat(e.target.value), min, max, step, !!integer)
       );
@@ -98,6 +100,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
 
   const handleInputBlur = useCallback(
     e => {
+      updateFlagRef.current = true;
       const newValue = parseFloat(e.target.value);
       setCurrentValue(roundValue(newValue, min, max, step, !!integer));
       setDisplay(newValue);
@@ -131,6 +134,7 @@ export const VarSlider: FC<IVarSliderProps> = ({
         step,
         !!integer
       );
+      updateFlagRef.current = true;
       setCurrentValue(value);
       setDisplay(value);
     },
@@ -139,11 +143,13 @@ export const VarSlider: FC<IVarSliderProps> = ({
 
   const increaseValue = useCallback(() => {
     const newValue = currentValue + (step ?? 1);
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 
   const decreaseValue = useCallback(() => {
     const newValue = currentValue - (step ?? 1);
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 

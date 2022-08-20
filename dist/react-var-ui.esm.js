@@ -358,6 +358,7 @@ var VarNumber = function VarNumber(_ref) {
       display = _useState[0],
       setDisplay = _useState[1];
 
+  var updateFlagRef = useRef(true);
   useEffect(function () {
     var _inputRef$current;
 
@@ -369,24 +370,28 @@ var VarNumber = function VarNumber(_ref) {
     };
   }, [currentValue]);
   useEffect(function () {
-    if (inputRef.current) {
+    if (inputRef.current && updateFlagRef.current) {
       var _value = roundValue(currentValue, min, max, step, !!integer).toString();
 
       inputRef.current.value = _value;
     }
-  }, [display]);
+  }, [currentValue, display]);
   var handleInputChange = useCallback(function (e) {
+    updateFlagRef.current = false;
     setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
   }, [setCurrentValue]);
   var handleInputBlur = useCallback(function (e) {
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
     setDisplay(parseFloat(e.target.value));
   }, [setCurrentValue, setDisplay]);
   var increaseValue = useCallback(function () {
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
     setDisplay(currentValue + (step != null ? step : 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
   var decreaseValue = useCallback(function () {
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
     setDisplay(currentValue - (step != null ? step : 1));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
@@ -485,6 +490,7 @@ var VarSlider = function VarSlider(_ref) {
       display = _useState[0],
       setDisplay = _useState[1];
 
+  var updateFlagRef = useRef(true);
   useEffect(function () {
     var _inputRef$current;
 
@@ -496,16 +502,18 @@ var VarSlider = function VarSlider(_ref) {
     };
   }, [currentValue]);
   useEffect(function () {
-    if (inputRef.current) {
+    if (inputRef.current && updateFlagRef.current) {
       var _value = roundValue(currentValue, min, max, step, !!integer).toString();
 
       inputRef.current.value = _value;
     }
-  }, [display]);
+  }, [currentValue, display]);
   var handleInputChange = useCallback(function (e) {
+    updateFlagRef.current = false;
     setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
   }, [setCurrentValue]);
   var handleInputBlur = useCallback(function (e) {
+    updateFlagRef.current = true;
     var newValue = parseFloat(e.target.value);
     setCurrentValue(roundValue(newValue, min, max, step, !!integer));
     setDisplay(newValue);
@@ -525,15 +533,18 @@ var VarSlider = function VarSlider(_ref) {
     var rect = div.getBoundingClientRect();
     var percent = (x - rect.left) / rect.width;
     var value = roundValue(min + (max - min) * percent, min, max, step, !!integer);
+    updateFlagRef.current = true;
     setCurrentValue(value);
     setDisplay(value);
   }, [setCurrentValue, setDisplay, integer, min, max, step]);
   var increaseValue = useCallback(function () {
     var newValue = currentValue + (step != null ? step : 1);
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
   var decreaseValue = useCallback(function () {
     var newValue = currentValue - (step != null ? step : 1);
+    updateFlagRef.current = true;
     setCurrentValue(roundValue(newValue, min, max, step, !!integer));
   }, [currentValue, setCurrentValue, integer, min, max, step]);
 
@@ -911,16 +922,19 @@ var VarVector2 = function VarVector2(_ref) {
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
-  var stateRef = React.useRef(currentValue);
+  var stateRef = useRef(currentValue);
+  var updateFlagRef = useRef(true);
   var handleInputChange = useCallback(function (e, index) {
     var newValue = [].concat(currentValue);
     newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    updateFlagRef.current = false;
     stateRef.current = newValue;
     setCurrentValue(newValue);
   }, [setCurrentValue, currentValue, stateRef]);
   var handleInputBlur = useCallback(function (e, index) {
     var newValue = JSON.parse(JSON.stringify(stateRef.current));
     newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    updateFlagRef.current = true;
     stateRef.current = newValue;
     setCurrentValue(newValue);
     setDisplay(newValue);
@@ -944,6 +958,10 @@ var VarVector2 = function VarVector2(_ref) {
     };
   }, [currentValue]);
   useEffect(function () {
+    if (!updateFlagRef.current) {
+      return;
+    }
+
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();
     }
@@ -951,7 +969,7 @@ var VarVector2 = function VarVector2(_ref) {
     if (inputRefY.current) {
       inputRefY.current.value = roundedY.toString();
     }
-  }, [display]);
+  }, [currentValue, display]);
   var roundedX = useMemo(function () {
     return roundValue(currentValue[0], min ? min[0] : min, max ? max[0] : max, step[0], !!integer);
   }, [currentValue, min, max, step, integer]);
@@ -1019,8 +1037,10 @@ var VarVector3 = function VarVector3(_ref) {
       currentValue = _useVarUIValue[0],
       setCurrentValue = _useVarUIValue[1];
 
-  var stateRef = React.useRef(currentValue);
+  var stateRef = useRef(currentValue);
+  var updateFlagRef = useRef(true);
   var handleInputChange = useCallback(function (e, index) {
+    updateFlagRef.current = false;
     var newValue = [].concat(currentValue);
     newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
     stateRef.current = newValue;
@@ -1029,6 +1049,7 @@ var VarVector3 = function VarVector3(_ref) {
   var handleInputBlur = useCallback(function (e, index) {
     var newValue = JSON.parse(JSON.stringify(stateRef.current));
     newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+    updateFlagRef.current = true;
     stateRef.current = newValue;
     setCurrentValue(newValue);
     setDisplay(newValue);
@@ -1057,6 +1078,10 @@ var VarVector3 = function VarVector3(_ref) {
     };
   }, [currentValue]);
   useEffect(function () {
+    if (!updateFlagRef.current) {
+      return;
+    }
+
     if (inputRefX.current) {
       inputRefX.current.value = roundedX.toString();
     }
@@ -1068,7 +1093,7 @@ var VarVector3 = function VarVector3(_ref) {
     if (inputRefZ.current) {
       inputRefZ.current.value = roundedZ.toString();
     }
-  }, [display]);
+  }, [currentValue, display]);
   var roundedX = useMemo(function () {
     return roundValue(currentValue[0], min ? min[0] : min, max ? max[0] : max, step[0], !!integer);
   }, [currentValue, min, max, step, integer]);

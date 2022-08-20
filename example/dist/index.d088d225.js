@@ -25298,6 +25298,7 @@ _c8 = IconUp;
     var inputRef = React.useRef(null);
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var _useState = React.useState(0), display = _useState[0], setDisplay = _useState[1];
+    var updateFlagRef = React.useRef(true);
     React.useEffect(function() {
         var _inputRef$current;
         (_inputRef$current = inputRef.current) == null || _inputRef$current.addEventListener('blur', handleInputBlur);
@@ -25309,19 +25310,22 @@ _c8 = IconUp;
         currentValue
     ]);
     React.useEffect(function() {
-        if (inputRef.current) {
+        if (inputRef.current && updateFlagRef.current) {
             var _value = roundValue(currentValue, min, max, step, !!integer).toString();
             inputRef.current.value = _value;
         }
     }, [
+        currentValue,
         display
     ]);
     var handleInputChange = React.useCallback(function(e) {
+        updateFlagRef.current = false;
         setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
     }, [
         setCurrentValue
     ]);
     var handleInputBlur = React.useCallback(function(e) {
+        updateFlagRef.current = true;
         setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
         setDisplay(parseFloat(e.target.value));
     }, [
@@ -25329,6 +25333,7 @@ _c8 = IconUp;
         setDisplay
     ]);
     var increaseValue = React.useCallback(function() {
+        updateFlagRef.current = true;
         setCurrentValue(roundValue(currentValue + (step != null ? step : 1), min, max, step, !!integer));
         setDisplay(currentValue + (step != null ? step : 1));
     }, [
@@ -25340,6 +25345,7 @@ _c8 = IconUp;
         step
     ]);
     var decreaseValue = React.useCallback(function() {
+        updateFlagRef.current = true;
         setCurrentValue(roundValue(currentValue - (step != null ? step : 1), min, max, step, !!integer));
         setDisplay(currentValue - (step != null ? step : 1));
     }, [
@@ -25372,7 +25378,7 @@ _c8 = IconUp;
         onClick: decreaseValue
     }, React__default.createElement(IconDown, null)))));
 };
-_s5(VarNumber, "UWBamD5I8zzaIi55opQGzddQk6M=", false, function() {
+_s5(VarNumber, "HqxTC9f9+ios7uMC26mO4Gphou4=", false, function() {
     return [
         useVarUIValue
     ];
@@ -25425,6 +25431,7 @@ _c10 = VarSelect;
     var inputRef = React.useRef(null);
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var _useState = React.useState(0), display = _useState[0], setDisplay = _useState[1];
+    var updateFlagRef = React.useRef(true);
     React.useEffect(function() {
         var _inputRef$current;
         (_inputRef$current = inputRef.current) == null || _inputRef$current.addEventListener('blur', handleInputBlur);
@@ -25436,19 +25443,22 @@ _c10 = VarSelect;
         currentValue
     ]);
     React.useEffect(function() {
-        if (inputRef.current) {
+        if (inputRef.current && updateFlagRef.current) {
             var _value = roundValue(currentValue, min, max, step, !!integer).toString();
             inputRef.current.value = _value;
         }
     }, [
+        currentValue,
         display
     ]);
     var handleInputChange = React.useCallback(function(e) {
+        updateFlagRef.current = false;
         setCurrentValue(roundValue(parseFloat(e.target.value), min, max, step, !!integer));
     }, [
         setCurrentValue
     ]);
     var handleInputBlur = React.useCallback(function(e) {
+        updateFlagRef.current = true;
         var newValue = parseFloat(e.target.value);
         setCurrentValue(roundValue(newValue, min, max, step, !!integer));
         setDisplay(newValue);
@@ -25478,6 +25488,7 @@ _c10 = VarSelect;
         var rect = div.getBoundingClientRect();
         var percent1 = (x - rect.left) / rect.width;
         var value1 = roundValue(min + (max - min) * percent1, min, max, step, !!integer);
+        updateFlagRef.current = true;
         setCurrentValue(value1);
         setDisplay(value1);
     }, [
@@ -25490,6 +25501,7 @@ _c10 = VarSelect;
     ]);
     var increaseValue = React.useCallback(function() {
         var newValue = currentValue + (step != null ? step : 1);
+        updateFlagRef.current = true;
         setCurrentValue(roundValue(newValue, min, max, step, !!integer));
     }, [
         currentValue,
@@ -25501,6 +25513,7 @@ _c10 = VarSelect;
     ]);
     var decreaseValue = React.useCallback(function() {
         var newValue = currentValue - (step != null ? step : 1);
+        updateFlagRef.current = true;
         setCurrentValue(roundValue(newValue, min, max, step, !!integer));
     }, [
         currentValue,
@@ -25550,7 +25563,7 @@ _c10 = VarSelect;
         onClick: decreaseValue
     }, React__default.createElement(IconDown, null)))));
 };
-_s7(VarSlider, "XPPQWqjvV2rv0lw2dFkNTOqulRM=", false, function() {
+_s7(VarSlider, "IlinG668qEGUtFos/HSVNWhsRto=", false, function() {
     return [
         useVarUIValue,
         reactUsePointerDrag.usePointerDragSimple
@@ -25866,10 +25879,12 @@ _c17 = VarImage;
         0
     ]), display = _useState[0], setDisplay = _useState[1];
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
-    var stateRef = React__default.useRef(currentValue);
+    var stateRef = React.useRef(currentValue);
+    var updateFlagRef = React.useRef(true);
     var handleInputChange = React.useCallback(function(e, index) {
         var newValue = [].concat(currentValue);
         newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+        updateFlagRef.current = false;
         stateRef.current = newValue;
         setCurrentValue(newValue);
     }, [
@@ -25880,6 +25895,7 @@ _c17 = VarImage;
     var handleInputBlur = React.useCallback(function(e, index) {
         var newValue = JSON.parse(JSON.stringify(stateRef.current));
         newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+        updateFlagRef.current = true;
         stateRef.current = newValue;
         setCurrentValue(newValue);
         setDisplay(newValue);
@@ -25911,9 +25927,11 @@ _c17 = VarImage;
         currentValue
     ]);
     React.useEffect(function() {
+        if (!updateFlagRef.current) return;
         if (inputRefX.current) inputRefX.current.value = roundedX.toString();
         if (inputRefY.current) inputRefY.current.value = roundedY.toString();
     }, [
+        currentValue,
         display
     ]);
     var roundedX = React.useMemo(function() {
@@ -25966,7 +25984,7 @@ _c17 = VarImage;
         }
     }))));
 };
-_s12(VarVector2, "KX/CqS6CyKLGxcYMZBepkkml/XY=", false, function() {
+_s12(VarVector2, "HpcdA/Zz/zkS1XyTXp0yU8+W1Xg=", false, function() {
     return [
         useVarUIValue
     ];
@@ -25990,8 +26008,10 @@ _c18 = VarVector2;
         0
     ]), display = _useState[0], setDisplay = _useState[1];
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
-    var stateRef = React__default.useRef(currentValue);
+    var stateRef = React.useRef(currentValue);
+    var updateFlagRef = React.useRef(true);
     var handleInputChange = React.useCallback(function(e, index) {
+        updateFlagRef.current = false;
         var newValue = [].concat(currentValue);
         newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
         stateRef.current = newValue;
@@ -26004,6 +26024,7 @@ _c18 = VarVector2;
     var handleInputBlur = React.useCallback(function(e, index) {
         var newValue = JSON.parse(JSON.stringify(stateRef.current));
         newValue[index] = roundValue(parseFloat(e.target.value), min ? min[index] : min, max ? max[index] : max, step[index], !!integer);
+        updateFlagRef.current = true;
         stateRef.current = newValue;
         setCurrentValue(newValue);
         setDisplay(newValue);
@@ -26042,10 +26063,12 @@ _c18 = VarVector2;
         currentValue
     ]);
     React.useEffect(function() {
+        if (!updateFlagRef.current) return;
         if (inputRefX.current) inputRefX.current.value = roundedX.toString();
         if (inputRefY.current) inputRefY.current.value = roundedY.toString();
         if (inputRefZ.current) inputRefZ.current.value = roundedZ.toString();
     }, [
+        currentValue,
         display
     ]);
     var roundedX = React.useMemo(function() {
@@ -26119,7 +26142,7 @@ _c18 = VarVector2;
         }
     }))));
 };
-_s13(VarVector3, "Pc3P2lvmE31/TcXzviw1pFh2bWw=", false, function() {
+_s13(VarVector3, "TIVKLzrSdjbD0B1BIVdPkLwO0pI=", false, function() {
     return [
         useVarUIValue
     ];
