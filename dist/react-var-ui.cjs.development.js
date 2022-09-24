@@ -246,7 +246,7 @@ var VarColor = function VarColor(_ref) {
     onClick: toggle
   }, React__default.createElement("div", {
     className: "react-var-ui-color-color",
-    title: "Color preview" + currentValue.a,
+    title: "Color preview",
     style: currentValue ? {
       background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ',' + (currentValue.a != undefined ? currentValue.a : 1) + ')'
     } : {}
@@ -255,6 +255,7 @@ var VarColor = function VarColor(_ref) {
   }, React__default.createElement(reactColor.SketchPicker, {
     color: currentValue,
     onChange: function onChange(result) {
+      console.log(result.rgb);
       setCurrentValue(result.rgb);
     },
     disableAlpha: !alpha

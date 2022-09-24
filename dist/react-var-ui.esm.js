@@ -239,7 +239,7 @@ var VarColor = function VarColor(_ref) {
     onClick: toggle
   }, React.createElement("div", {
     className: "react-var-ui-color-color",
-    title: "Color preview" + currentValue.a,
+    title: "Color preview",
     style: currentValue ? {
       background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ',' + (currentValue.a != undefined ? currentValue.a : 1) + ')'
     } : {}

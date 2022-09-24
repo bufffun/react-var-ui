@@ -68,7 +68,7 @@ export const VarColor: FC<IVarColorProps> = ({
           <div className="react-var-ui-color-swatch" onClick={toggle}>
             <div
               className="react-var-ui-color-color"
-              title={"Color preview" + currentValue.a}
+              title="Color preview"
               style={
                 currentValue
                   ? { background:
