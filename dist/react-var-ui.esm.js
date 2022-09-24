@@ -184,6 +184,7 @@ var VarColor = function VarColor(_ref) {
   var label = _ref.label,
       path = _ref.path,
       value = _ref.value,
+      alpha = _ref.alpha,
       onChange = _ref.onChange,
       disabled = _ref.disabled,
       className = _ref.className;
@@ -231,25 +232,26 @@ var VarColor = function VarColor(_ref) {
     className: className
   }, React.createElement("span", null, React.createElement("span", {
     className: "react-var-ui-color-value"
-  }, tinycolor(currentValue).toHexString()), React.createElement("div", {
+  }, alpha ? tinycolor(currentValue).toHex8String() : tinycolor(currentValue).toHexString()), React.createElement("div", {
     className: "react-var-ui-color"
   }, React.createElement("div", {
     className: "react-var-ui-color-swatch",
     onClick: toggle
   }, React.createElement("div", {
     className: "react-var-ui-color-color",
-    title: "Color preview",
+    title: "Color preview" + currentValue.a,
     style: currentValue ? {
-      background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
+      background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ',' + (currentValue.a != undefined ? currentValue.a : 1) + ')'
     } : {}
   })), show ? React.createElement("div", {
     className: "react-var-ui-color-popover"
   }, React.createElement(SketchPicker, {
     color: currentValue,
     onChange: function onChange(result) {
+      console.log(result.rgb);
       setCurrentValue(result.rgb);
     },
-    disableAlpha: true
+    disableAlpha: !alpha
   })) : null)));
 };
 

@@ -20,6 +20,7 @@ export const VarColor: FC<IVarColorProps> = ({
   label,
   path,
   value,
+  alpha,
   onChange,
   disabled,
   className,
@@ -61,23 +62,24 @@ export const VarColor: FC<IVarColorProps> = ({
     <VarBase label={label} disabled={disabled} className={className}>
       <span>
         <span className="react-var-ui-color-value">
-          {tinycolor(currentValue).toHexString()}
+          {alpha ? tinycolor(currentValue).toHex8String() : tinycolor(currentValue).toHexString()}
         </span>
         <div className="react-var-ui-color">
           <div className="react-var-ui-color-swatch" onClick={toggle}>
             <div
               className="react-var-ui-color-color"
-              title="Color preview"
+              title={"Color preview" + currentValue.a}
               style={
                 currentValue
-                  ? {
-                      background:
+                  ? { background:
                         'rgb(' +
                         currentValue.r +
                         ',' +
                         currentValue.g +
                         ',' +
                         currentValue.b +
+                        ',' +
+                        (currentValue.a != undefined ? currentValue.a : 1) + 
                         ')',
                     }
                   : {}
@@ -89,9 +91,10 @@ export const VarColor: FC<IVarColorProps> = ({
               <SketchPicker
                 color={currentValue}
                 onChange={result => {
+                  console.log(result.rgb);
                   setCurrentValue(result.rgb);
                 }}
-                disableAlpha={true}
+                disableAlpha={!alpha}
               />
             </div>
           ) : null}

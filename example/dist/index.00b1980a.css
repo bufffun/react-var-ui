@@ -321,9 +321,9 @@
   color: var(--react-var-ui-foreground-color, #ddd);
   outline: none !important;
   height: 1.3rem;
-  padding: 0 0.2rem;
+  padding: 0 0.15rem 0 0.2rem;
   text-align: right;
-  border-radius: 0.25rem;
+  border-radius: 0.26rem;
 }
 .react-var-ui-slider input::-webkit-outer-spin-button, .react-var-ui-slider input::-webkit-inner-spin-button, .react-var-ui-number input::-webkit-outer-spin-button, .react-var-ui-number input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -353,7 +353,7 @@
 }
 .react-var-ui-vector-wrapper {
   height: 1.3rem;
-  margin: 0 5px;
+  margin: 0 3px;
   flex: 1 1 0;
   background: #383c4a;
   border-radius: 0.25rem;
@@ -363,7 +363,7 @@
   overflow: hidden;
 }
 .react-var-ui-vector-wrapper span {
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
   font-style: normal;
   font-weight: 600;
   font-size: 12px;

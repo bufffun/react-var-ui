@@ -25168,7 +25168,7 @@ _c4 = VarButton;
  * Color picker component. Returns and accepts values in form of hex color strings.
  */ var VarColor = function VarColor1(_ref) {
     _s3();
-    var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, disabled = _ref.disabled, className = _ref.className;
+    var label = _ref.label, path = _ref.path, value = _ref.value, alpha = _ref.alpha, onChange = _ref.onChange, disabled = _ref.disabled, className = _ref.className;
     var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
     var _useState = React.useState(false), show = _useState[0], setShow = _useState[1];
     var handleCloseClick = React.useCallback(function(event) {
@@ -25204,16 +25204,16 @@ _c4 = VarButton;
         className: className
     }, React__default.createElement("span", null, React__default.createElement("span", {
         className: "react-var-ui-color-value"
-    }, tinycolor(currentValue).toHexString()), React__default.createElement("div", {
+    }, alpha ? tinycolor(currentValue).toHex8String() : tinycolor(currentValue).toHexString()), React__default.createElement("div", {
         className: "react-var-ui-color"
     }, React__default.createElement("div", {
         className: "react-var-ui-color-swatch",
         onClick: toggle
     }, React__default.createElement("div", {
         className: "react-var-ui-color-color",
-        title: "Color preview",
+        title: "Color preview" + currentValue.a,
         style: currentValue ? {
-            background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ')'
+            background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ',' + (currentValue.a != undefined ? currentValue.a : 1) + ')'
         } : {
         }
     })), show ? React__default.createElement("div", {
@@ -25221,9 +25221,10 @@ _c4 = VarButton;
     }, React__default.createElement(reactColor.SketchPicker, {
         color: currentValue,
         onChange: function onChange1(result1) {
+            console.log(result1.rgb);
             setCurrentValue(result1.rgb);
         },
-        disableAlpha: true
+        disableAlpha: !alpha
     })) : null)));
 };
 _s3(VarColor, "2yxRgii0wo2MwrFOdNJAGUKDVK0=", false, function() {
