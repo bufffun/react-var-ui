@@ -63,7 +63,7 @@ $transition-time: 0.2s;
     & &-item:first-child:before {
       position: absolute;
       top: -12px;
-      bottom: -40px;
+      bottom: 0px;
       margin-left: -8px;
       border-left: 1px solid #515668;
       content: ' ';
