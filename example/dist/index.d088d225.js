@@ -397,6 +397,8 @@ const App = ()=>{
     image.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
     const [values, setValues] = _react.useState({
         toggle: true,
+        toggleGroup: true,
+        toogleChild: 1,
         color: {
             r: 254.5,
             g: 0,
@@ -444,27 +446,27 @@ const App = ()=>{
     return(/*#__PURE__*/ _react.createElement("div", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 55
+            lineNumber: 58
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("h1", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 56
+            lineNumber: 59
         },
         __self: undefined
     }, "VarUI example"), /*#__PURE__*/ _react.createElement("div", {
         className: "example",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 57
+            lineNumber: 60
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
         className: "wrapper",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 58
+            lineNumber: 61
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarUI, {
@@ -472,7 +474,7 @@ const App = ()=>{
         values: values,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 59
+            lineNumber: 62
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarCategory, {
@@ -480,7 +482,7 @@ const App = ()=>{
         showDash: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 61
+            lineNumber: 64
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -489,7 +491,7 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 62
+            lineNumber: 65
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
@@ -497,7 +499,7 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 63
+            lineNumber: 66
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarToggle, {
@@ -505,7 +507,7 @@ const App = ()=>{
         path: "toggle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 64
+            lineNumber: 67
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -514,14 +516,41 @@ const App = ()=>{
         alpha: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 66
+            lineNumber: 69
         },
         __self: undefined
-    }), /*#__PURE__*/ _react.createElement(_.VarAdd, {
+    }), /*#__PURE__*/ _react.createElement(_.VarToggleGroup, {
+        label: "ToggleGroup",
+        path: "toggleGroup",
+        toggleHidden: true,
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 70
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 71
+        },
+        __self: undefined
+    }, /*#__PURE__*/ _react.createElement(_.VarSlider, {
+        label: " ",
+        path: "toogleChild",
+        disabled: false,
+        min: 0.2,
+        max: 0.8,
+        step: 0.1,
+        __source: {
+            fileName: "/Users/renes/react-var-ui/example/index.tsx",
+            lineNumber: 72
+        },
+        __self: undefined
+    }))), /*#__PURE__*/ _react.createElement(_.VarAdd, {
         label: "ADD",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 67
+            lineNumber: 82
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("div", {
@@ -532,7 +561,7 @@ const App = ()=>{
         },
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 68
+            lineNumber: 83
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarDisplay, {
@@ -540,20 +569,20 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 76
+            lineNumber: 91
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarGroup, {
         label: "Group",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 77
+            lineNumber: 92
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 78
+            lineNumber: 93
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarToggle, {
@@ -561,13 +590,13 @@ const App = ()=>{
         path: "toggle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 79
+            lineNumber: 94
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 81
+            lineNumber: 96
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarColor, {
@@ -576,13 +605,13 @@ const App = ()=>{
         alpha: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 82
+            lineNumber: 97
         },
         __self: undefined
     })), /*#__PURE__*/ _react.createElement(_.VarGroupItem, {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 84
+            lineNumber: 99
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement(_.VarImage, {
@@ -591,7 +620,7 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 85
+            lineNumber: 100
         },
         __self: undefined
     }))), /*#__PURE__*/ _react.createElement(_.VarSelect, {
@@ -609,18 +638,19 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 93
+            lineNumber: 108
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
         label: "VarSlider",
         path: "slider",
+        disabled: true,
         min: 0.2,
         max: 0.8,
         step: 0.1,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 101
+            lineNumber: 116
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -633,7 +663,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 108
+            lineNumber: 124
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -645,7 +675,7 @@ const App = ()=>{
         showInput: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 117
+            lineNumber: 133
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarSlider, {
@@ -657,7 +687,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 125
+            lineNumber: 141
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -669,7 +699,7 @@ const App = ()=>{
         showButtons: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 133
+            lineNumber: 149
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -682,7 +712,7 @@ const App = ()=>{
         onChange: colorChange,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 141
+            lineNumber: 157
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarVector2, {
@@ -702,7 +732,7 @@ const App = ()=>{
         ],
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 150
+            lineNumber: 166
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarVector3, {
@@ -729,7 +759,7 @@ const App = ()=>{
         },
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 157
+            lineNumber: 173
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarNumber, {
@@ -737,7 +767,7 @@ const App = ()=>{
         path: "number",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 166
+            lineNumber: 184
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -745,7 +775,7 @@ const App = ()=>{
         path: "string",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 167
+            lineNumber: 185
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarString, {
@@ -754,7 +784,7 @@ const App = ()=>{
         multiline: true,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 168
+            lineNumber: 186
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarAngle, {
@@ -762,7 +792,7 @@ const App = ()=>{
         path: "angle",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 169
+            lineNumber: 187
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarXY, {
@@ -770,7 +800,7 @@ const App = ()=>{
         path: "xy",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 170
+            lineNumber: 188
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -779,7 +809,7 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 171
+            lineNumber: 189
         },
         __self: undefined
     }), /*#__PURE__*/ _react.createElement(_.VarButton, {
@@ -789,26 +819,26 @@ const App = ()=>{
         ,
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 175
+            lineNumber: 193
         },
         __self: undefined
     }))), /*#__PURE__*/ _react.createElement("div", {
         className: "values",
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 183
+            lineNumber: 201
         },
         __self: undefined
     }, /*#__PURE__*/ _react.createElement("strong", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 184
+            lineNumber: 202
         },
         __self: undefined
     }, "Values:"), /*#__PURE__*/ _react.createElement("dl", {
         __source: {
             fileName: "/Users/renes/react-var-ui/example/index.tsx",
-            lineNumber: 185
+            lineNumber: 203
         },
         __self: undefined
     }, Object.keys(values).map(function(key) {
@@ -816,13 +846,13 @@ const App = ()=>{
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 195
+                lineNumber: 213
             },
             __self: this
         }, /*#__PURE__*/ _react.createElement("span", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 196
+                lineNumber: 214
             },
             __self: this
         }, JSON.stringify(values[key]))));
@@ -830,19 +860,19 @@ const App = ()=>{
             key: key,
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 201
+                lineNumber: 219
             },
             __self: this
         }, /*#__PURE__*/ _react.createElement("dt", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 202
+                lineNumber: 220
             },
             __self: this
         }, key), /*#__PURE__*/ _react.createElement("dd", {
             __source: {
                 fileName: "/Users/renes/react-var-ui/example/index.tsx",
-                lineNumber: 203
+                lineNumber: 221
             },
             __self: this
         }, typeof values[key] === 'boolean' ? values[key] ? 'true' : 'false' : Array.isArray(values[key]) ? values[key].join(', ') : values[key])));
@@ -851,7 +881,7 @@ const App = ()=>{
 _reactDom.render(/*#__PURE__*/ _react.createElement(App, {
     __source: {
         fileName: "/Users/renes/react-var-ui/example/index.tsx",
-        lineNumber: 222
+        lineNumber: 240
     },
     __self: undefined
 }), document.getElementById('root'));
@@ -24987,7 +25017,7 @@ var prevRefreshSig = window.$RefreshSig$;
 helpers.prelude(module);
 
 try {
-var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$(), _s4 = $RefreshSig$(), _s5 = $RefreshSig$(), _s6 = $RefreshSig$(), _s7 = $RefreshSig$(), _s8 = $RefreshSig$(), _s9 = $RefreshSig$(), _s10 = $RefreshSig$(), _s11 = $RefreshSig$(), _s12 = $RefreshSig$(), _s13 = $RefreshSig$(), _s14 = $RefreshSig$();
+var _s = $RefreshSig$(), _s1 = $RefreshSig$(), _s2 = $RefreshSig$(), _s3 = $RefreshSig$(), _s4 = $RefreshSig$(), _s5 = $RefreshSig$(), _s6 = $RefreshSig$(), _s7 = $RefreshSig$(), _s8 = $RefreshSig$(), _s9 = $RefreshSig$(), _s10 = $RefreshSig$(), _s11 = $RefreshSig$(), _s12 = $RefreshSig$(), _s13 = $RefreshSig$(), _s14 = $RefreshSig$(), _s15 = $RefreshSig$();
 'use strict';
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -25211,7 +25241,7 @@ _c4 = VarButton;
         onClick: toggle
     }, React__default.createElement("div", {
         className: "react-var-ui-color-color",
-        title: "Color preview" + currentValue.a,
+        title: "Color preview",
         style: currentValue ? {
             background: 'rgb(' + currentValue.r + ',' + currentValue.g + ',' + currentValue.b + ',' + (currentValue.a != undefined ? currentValue.a : 1) + ')'
         } : {
@@ -26246,6 +26276,37 @@ _c21 = VarAdd;
 };
 _c22 = VarGroup;
 /**
+ * Checkbox/toggle component. Accepts and returns a boolean (true/false).
+ */ var VarToggleGroup = function VarToggleGroup1(_ref) {
+    _s15();
+    var label = _ref.label, path = _ref.path, value = _ref.value, onChange = _ref.onChange, disabled = _ref.disabled, className = _ref.className, children = _ref.children, toggleHidden = _ref.toggleHidden;
+    var _useVarUIValue = useVarUIValue(path, value, onChange), currentValue = _useVarUIValue[0], setCurrentValue = _useVarUIValue[1];
+    return React__default.createElement("div", null, React__default.createElement(VarBase, {
+        label: label,
+        disabled: disabled,
+        className: className
+    }, React__default.createElement("span", null, React__default.createElement("label", {
+        className: "react-var-ui-toggle",
+        title: "Toggle"
+    }, React__default.createElement("input", {
+        type: "checkbox",
+        checked: currentValue || false,
+        onChange: function onChange1(e) {
+            return setCurrentValue(e.target.checked);
+        }
+    }), React__default.createElement("span", {
+        className: "react-var-ui-toggle-helper"
+    })))), !!children && !(toggleHidden && (!currentValue || false)) && React__default.createElement("div", {
+        className: "react-var-ui-group"
+    }, children));
+};
+_s15(VarToggleGroup, "1LAG4oC31z47hVvkk31qNkU9wNQ=", false, function() {
+    return [
+        useVarUIValue
+    ];
+});
+_c23 = VarToggleGroup;
+/**
  * Group item component inside group.
  */ var VarGroupItem = function VarGroupItem1(_ref) {
     var children = _ref.children;
@@ -26253,7 +26314,7 @@ _c22 = VarGroup;
         className: "react-var-ui-group-item"
     }, children);
 };
-_c23 = VarGroupItem;
+_c24 = VarGroupItem;
 /**
  * Category component for grouping inputs.
  */ var VarCategory = function VarCategory1(_ref) {
@@ -26264,7 +26325,7 @@ _c23 = VarGroupItem;
         className: 'react-var-ui-category-title ' + (showDash ? 'react-var-ui-category-title-dash' : '')
     }, label), !!children && React__default.createElement("div", null, children));
 };
-_c24 = VarCategory;
+_c25 = VarCategory;
 exports.VarAdd = VarAdd;
 exports.VarAngle = VarAngle;
 exports.VarBase = VarBase;
@@ -26280,12 +26341,13 @@ exports.VarSelect = VarSelect;
 exports.VarSlider = VarSlider;
 exports.VarString = VarString;
 exports.VarToggle = VarToggle;
+exports.VarToggleGroup = VarToggleGroup;
 exports.VarUI = VarUI;
 exports.VarVector2 = VarVector2;
 exports.VarVector3 = VarVector3;
 exports.VarXY = VarXY;
 exports.useVarUIValue = useVarUIValue;
-var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17, _c18, _c19, _c20, _c21, _c22, _c23, _c24;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14, _c15, _c16, _c17, _c18, _c19, _c20, _c21, _c22, _c23, _c24, _c25;
 $RefreshReg$(_c, "React__default");
 $RefreshReg$(_c1, "VarUI");
 $RefreshReg$(_c2, "VarBase");
@@ -26309,8 +26371,9 @@ $RefreshReg$(_c19, "VarVector3");
 $RefreshReg$(_c20, "IconAdd");
 $RefreshReg$(_c21, "VarAdd");
 $RefreshReg$(_c22, "VarGroup");
-$RefreshReg$(_c23, "VarGroupItem");
-$RefreshReg$(_c24, "VarCategory");
+$RefreshReg$(_c23, "VarToggleGroup");
+$RefreshReg$(_c24, "VarGroupItem");
+$RefreshReg$(_c25, "VarCategory");
 
   helpers.postlude(module);
 } finally {

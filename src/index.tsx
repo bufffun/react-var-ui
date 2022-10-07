@@ -21,6 +21,7 @@ export * from './VarVector3';
 // Other
 export * from './VarAdd';
 export * from './VarGroup';
+export * from './VarToggleGroup';
 export * from './VarGroupItem';
 export * from './VarCategory';
 

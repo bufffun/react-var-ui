@@ -1258,6 +1258,44 @@ var VarGroup = function VarGroup(_ref) {
 };
 
 /**
+ * Checkbox/toggle component. Accepts and returns a boolean (true/false).
+ */
+
+var VarToggleGroup = function VarToggleGroup(_ref) {
+  var label = _ref.label,
+      path = _ref.path,
+      value = _ref.value,
+      onChange = _ref.onChange,
+      disabled = _ref.disabled,
+      className = _ref.className,
+      children = _ref.children,
+      toggleHidden = _ref.toggleHidden;
+
+  var _useVarUIValue = useVarUIValue(path, value, onChange),
+      currentValue = _useVarUIValue[0],
+      setCurrentValue = _useVarUIValue[1];
+
+  return React.createElement("div", null, React.createElement(VarBase, {
+    label: label,
+    disabled: disabled,
+    className: className
+  }, React.createElement("span", null, React.createElement("label", {
+    className: "react-var-ui-toggle",
+    title: "Toggle"
+  }, React.createElement("input", {
+    type: "checkbox",
+    checked: currentValue || false,
+    onChange: function onChange(e) {
+      return setCurrentValue(e.target.checked);
+    }
+  }), React.createElement("span", {
+    className: "react-var-ui-toggle-helper"
+  })))), !!children && !(toggleHidden && (!currentValue || false)) && React.createElement("div", {
+    className: "react-var-ui-group"
+  }, children));
+};
+
+/**
  * Group item component inside group.
  */
 
@@ -1284,5 +1322,5 @@ var VarCategory = function VarCategory(_ref) {
   }, label), !!children && React.createElement("div", null, children));
 };
 
-export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarUI, VarVector2, VarVector3, VarXY, useVarUIValue };
+export { VarAdd, VarAngle, VarBase, VarButton, VarCategory, VarColor, VarDisplay, VarGroup, VarGroupItem, VarImage, VarNumber, VarSelect, VarSlider, VarString, VarToggle, VarToggleGroup, VarUI, VarVector2, VarVector3, VarXY, useVarUIValue };
 //# sourceMappingURL=react-var-ui.esm.js.map

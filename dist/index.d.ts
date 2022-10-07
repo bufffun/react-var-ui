@@ -16,6 +16,7 @@ export * from './VarVector2';
 export * from './VarVector3';
 export * from './VarAdd';
 export * from './VarGroup';
+export * from './VarToggleGroup';
 export * from './VarGroupItem';
 export * from './VarCategory';
 export { useVarUIValue } from './common/VarUIContext';

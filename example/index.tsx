@@ -23,6 +23,7 @@ import {
   VarGroupItem,
   VarVector2,
   VarVector3,
+  VarToggleGroup,
 } from '../.';
 
 const App = () => {
@@ -31,6 +32,8 @@ const App = () => {
     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
   const [values, setValues] = React.useState({
     toggle: true,
+    toggleGroup: true,
+    toogleChild: 1,
     color: { r: 254.5, g: 0, b: 0 },
     colorAlpha: { r: 0, g: 220, b: 10 },
     select: 'zero',
@@ -64,6 +67,18 @@ const App = () => {
               <VarToggle label="VarToggle" path="toggle" />
             </VarCategory>
             <VarColor label="VarColor (alpha)" path="colorAlpha" alpha />
+            <VarToggleGroup label="ToggleGroup" path="toggleGroup" toggleHidden={true}>
+              <VarGroupItem>
+                <VarSlider
+                  label=" "
+                  path="toogleChild"
+                  disabled={false}
+                  min={0.2}
+                  max={0.8}
+                  step={0.1}
+                />
+              </VarGroupItem>
+            </VarToggleGroup>
             <VarAdd label="ADD">
               <div
                 style={{
@@ -101,6 +116,7 @@ const App = () => {
             <VarSlider
               label="VarSlider"
               path="slider"
+              disabled={true}
               min={0.2}
               max={0.8}
               step={0.1}
@@ -160,8 +176,10 @@ const App = () => {
               min={[1, 2, 3]}
               max={[200, 20, 100]}
               step={[1, 1, 1]}
-              onChange={(p, v) => {console.log(p);
-              console.log(v);}}
+              onChange={(p, v) => {
+                console.log(p);
+                console.log(v);
+              }}
             />
             <VarNumber label="VarNumber (no buttons)" path="number" />
             <VarString label="VarString" path="string" />
