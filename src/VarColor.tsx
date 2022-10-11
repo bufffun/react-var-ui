@@ -91,7 +91,6 @@ export const VarColor: FC<IVarColorProps> = ({
               <SketchPicker
                 color={currentValue}
                 onChange={result => {
-                  console.log(result.rgb);
                   setCurrentValue(result.rgb);
                 }}
                 disableAlpha={!alpha}

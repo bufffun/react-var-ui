@@ -255,7 +255,6 @@ var VarColor = function VarColor(_ref) {
   }, React__default.createElement(reactColor.SketchPicker, {
     color: currentValue,
     onChange: function onChange(result) {
-      console.log(result.rgb);
       setCurrentValue(result.rgb);
     },
     disableAlpha: !alpha
